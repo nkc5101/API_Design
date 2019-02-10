@@ -25,7 +25,7 @@ public class PrescriptionController {
         this.doctors = new ArrayList<>();
         this.patients = new ArrayList<>();
         userInterface = new PrescriptionUI();
-        userInterface.viewPrescriptions();
+        userInterface.viewPrescriptions(patients.get(0));
     }
     /**
      * Adds prescription to the patients list

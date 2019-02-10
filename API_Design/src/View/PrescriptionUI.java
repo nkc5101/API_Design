@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Patient;
+
 /**
  *
  * @author nate
@@ -12,8 +14,9 @@ package View;
 public class PrescriptionUI {
     /**
      * Shows the user the available prescriptions and where they can pick it up
+     * @param patient patient who's prescriptions are being shown
      */
-    public void viewPrescriptions(){
+    public void viewPrescriptions(Patient patient){
         
     }
     /**
