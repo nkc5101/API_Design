@@ -16,14 +16,20 @@ import java.util.ArrayList;
 public class PatientController {
     private ArrayList<Patient> patientList;
     private RecordsUI userInterface;
+    private static PatientController controller;
     /**
      * Default Constructor for PatientController 
      */
-    public PatientController(){
+    private PatientController(){
         this.patientList = new ArrayList<>();
         this.userInterface = new RecordsUI();
+        this.controller = new PatientController();
         userInterface.viewPatientRecords(patientList.get(0));
         
+    }
+    
+    public static PatientController getPatientController(){
+        return controller;
     }
     /**
      * Adds patient to list of patients

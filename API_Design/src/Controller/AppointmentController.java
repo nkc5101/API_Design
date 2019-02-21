@@ -7,29 +7,29 @@ package Controller;
 
 import Model.Appointment;
 import View.*;
-import java.util.ArrayList;
 
 /**
  *
  * @author nate
  */
 public class AppointmentController {
-    private ArrayList<Appointment> appointments;
     private AppointmentUI userInterface;
+    private static AppointmentController controller;
     /**
      * Default constructor for AppointmentController, sets up UI for viewing
+     * @param appointments
      */
-    public AppointmentController(){
-        this.appointments = new ArrayList<>();
+    private AppointmentController(){
         this.userInterface = new AppointmentUI();
-        userInterface.viewAppointments();
+        userInterface.viewAppointments(PatientController.getPatientController().getPatientList().get(0).getAppointments());
+        controller = new AppointmentController();
     }
     /**
     *Adds appointments to list
     * @param app new appointment to be added
     */
     public void addAppointment(Appointment app){
-         appointments.add(app);
+         PatientController.getPatientController().getPatientList().get(0).getAppointments().add(app);
     }
     
     /**

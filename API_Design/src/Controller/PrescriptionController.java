@@ -6,7 +6,6 @@
 package Controller;
 
 import Model.Doctor;
-import Model.Patient;
 import View.PrescriptionUI;
 import java.util.ArrayList;
 
@@ -16,28 +15,32 @@ import java.util.ArrayList;
  */
 public class PrescriptionController {
     private PrescriptionUI userInterface;
-    private ArrayList<Patient> patients;
     private ArrayList<Doctor> doctors;
+    private static PrescriptionController controller;
     /**
      * Default constructor for PrescriptionController and displays the prescriptions interface
      */
-    public PrescriptionController(){
+    private PrescriptionController(){
         this.doctors = new ArrayList<>();
-        this.patients = new ArrayList<>();
         userInterface = new PrescriptionUI();
-        userInterface.viewPrescriptions(patients.get(0));
+        userInterface.viewPrescriptions(PatientController.getPatientController().getPatientList().get(0));
+        this.controller = new PrescriptionController();
+    }
+    
+    public static PrescriptionController getPrescriptionController(){
+        return controller;
     }
     /**
      * Adds prescription to the patients list
      * @param prescription 
      */
     public void addPrescripiton(String prescription){
-        
+        PatientController.getPatientController().getPatientList().get(0).addPrescription(prescription);
     }
     /**
      * Sets allows user to see interface for prescribing medication
      */
     public void viewPrescriptionForm(){
-        userInterface.viewPrecriptionForm();
+        userInterface.viewPrescriptionForm();
     }
 }
