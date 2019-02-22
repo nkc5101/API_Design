@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.AppointmentController;
+import Controller.PatientController;
 import Model.Appointment;
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class AppointmentUI {
         System.out.println("Date:");
         System.out.println("Time:");
         System.out.println("Doctor:");
+        AppointmentController.getAppointmentController().addAppointment(new Appointment(PatientController.getPatientController().getPatientList().get(0), PatientController.getPatientController().getPatientList().get(0).getDoctor(), "12/30/99", "12:30", "208", "Hershey"));
     }
     /**
      * Allows the user to see the scheduled appointments

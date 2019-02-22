@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Model.Doctor;
+import Model.InsuranceCompany;
 import Model.Patient;
 import View.RecordsUI;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class PatientController {
         this.userInterface = new RecordsUI();
         this.controller = new PatientController();
         userInterface.viewPatientRecords(patientList.get(0));
+        patientList.add(new Patient("user", "pass", "user@gmail.com", "Joe", "Shmoe", new InsuranceCompany("Blue cross", "123 Atherton St"), new Doctor("test", "pass","test@email.com","Jane", "Doe", "Hershey", "Surgery")));
         
     }
     
@@ -51,6 +54,10 @@ public class PatientController {
      */
     public ArrayList<Patient> getPatientList(){
         return patientList;
+    }
+    
+    public void viewSingleRecord(){
+        userInterface.viewPatientSingleRecord(patientList.get(0).getPatientRecords().get(0));
     }
     
 }

@@ -13,16 +13,19 @@ public class Record {
     private Appointment appointment;
     private String comments;
     private boolean completed;
+    private int price;
     /**
      * The default constructor for Record
      * @param appointment
      * @param comments
      * @param completed 
+     * @param price 
      */
-    public Record(Appointment appointment, String comments, boolean completed){
+    public Record(Appointment appointment, String comments, boolean completed, int price){
         this.appointment = appointment;
         this.comments = comments;
         this.completed = completed;
+        this.price = price;
     }
 
     /**
@@ -71,6 +74,20 @@ public class Record {
      */
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    /**
+     * @return the price
+     */
+    public int getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(int price) {
+        this.price = price;
     }
     
     

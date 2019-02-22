@@ -4,30 +4,30 @@
  * and open the template in the editor.
  */
 package Controller;
-import Model.*;
 import View.*;
-import java.util.ArrayList;
 /**
  *
  * @author nate
  */
 public class BillController {
     private PayBillUI userInterface;
-    private ArrayList<Patient> patients;
-    private ArrayList<InsuranceCompany> insurance;
+    private static BillController controller;
     /**
      * Default constructor for BillController and sets up user interface
      */
-    public BillController(){
-        this.patients = new ArrayList<>();
-        this.insurance = new ArrayList<>();
+    private BillController(){
         this.userInterface = new PayBillUI();
-        userInterface.viewBalance();
+        userInterface.viewBalance(PatientController.getPatientController().getPatientList().get(0).getPatientRecords().get(0));
+        controller = new BillController();
+    }
+    
+    public BillController getBillController(){
+        return controller;
     }
     /**
      * Shows the patient the user interface for paying bills
      */
     public void payBill(){
-        
+        userInterface.payBill(PatientController.getPatientController().getPatientList().get(0).getPatientRecords().get(0));
     }
 }

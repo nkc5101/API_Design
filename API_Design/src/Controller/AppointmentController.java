@@ -24,6 +24,10 @@ public class AppointmentController {
         userInterface.viewAppointments(PatientController.getPatientController().getPatientList().get(0).getAppointments());
         controller = new AppointmentController();
     }
+    
+    public static AppointmentController getAppointmentController(){
+        return controller;
+    }
     /**
     *Adds appointments to list
     * @param app new appointment to be added

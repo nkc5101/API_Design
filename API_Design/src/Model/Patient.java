@@ -15,6 +15,7 @@ public class Patient extends User{
     private String firstName;
     private String lastName;
     private InsuranceCompany patientInsurance;
+    private Doctor doctor;
     private ArrayList<Appointment> appointments;
     private ArrayList<Record> patientRecords;
     private ArrayList<String> prescriptions;
@@ -27,11 +28,12 @@ public class Patient extends User{
      * @param lastName
      * @param patientInsurance 
      */
-    public Patient(String username, String password, String email, String firstName, String lastName, InsuranceCompany patientInsurance) {
+    public Patient(String username, String password, String email, String firstName, String lastName, InsuranceCompany patientInsurance, Doctor doctor) {
         super(username, password, email);
         this.firstName =firstName;
         this.lastName = lastName;
         this.patientInsurance = patientInsurance;
+        this.doctor = doctor;
         this.appointments = new ArrayList<>();
         this.patientRecords = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
@@ -129,6 +131,20 @@ public class Patient extends User{
      */
     public void addPrescription(String prescription){
         
+    }
+
+    /**
+     * @return the doctor
+     */
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    /**
+     * @param doctor the doctor to set
+     */
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
     
 }

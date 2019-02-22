@@ -6,6 +6,7 @@
 package View;
 
 import Model.Patient;
+import Model.Record;
 
 /**
  *
@@ -18,14 +19,22 @@ public class RecordsUI {
      * @param patient patient who's records are being shown
      */
     public void viewPatientRecords(Patient patient){
-        viewPatientSingleRecord(0);
+        for(int i=0; i<patient.getPatientRecords().size(); i++){
+            System.out.println(patient.getPatientRecords().get(i).getAppointment().getDate() + ": " + patient.getPatientRecords().get(i).getAppointment().getTime());
+        }
     }
     
     /**
      * Allows the user to view an individual record for a single patient
-     * @param index index of record to select
+     * @param record
      */
-    public void viewPatientSingleRecord(int index){
+    public void viewPatientSingleRecord(Record record){
+        System.out.println(record.getAppointment().getDate());
+        System.out.println(record.getAppointment().getTime());
+        System.out.println(record.getAppointment().getDoctor());
+        System.out.println(record.getAppointment().getHospital());
+        System.out.println(record.getAppointment().getRoom());
+        System.out.println("Was Completed: " + record.isCompleted());
         
     }
 }
