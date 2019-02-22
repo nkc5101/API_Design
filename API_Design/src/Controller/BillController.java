@@ -9,6 +9,7 @@ import View.*;
  *
  * @author nate
  */
+
 public class BillController {
     private PayBillUI userInterface;
     private static BillController controller;

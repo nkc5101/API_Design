@@ -19,6 +19,7 @@ public class AppointmentController {
      * Default constructor for AppointmentController, sets up UI for viewing
      * @param appointments
      */
+
     private AppointmentController(){
         this.userInterface = new AppointmentUI();
         userInterface.viewAppointments(PatientController.getPatientController().getPatientList().get(0).getAppointments());
