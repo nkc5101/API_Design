@@ -19,11 +19,15 @@ public class BillController {
     private BillController(){
         this.userInterface = new PayBillUI();
         userInterface.viewBalance(PatientController.getPatientController().getPatientList().get(0).getPatientRecords().get(0));
-        controller = new BillController();
     }
     
-    public BillController getBillController(){
-        return controller;
+    public static BillController getBillController(){
+        if(controller == null){
+            controller = new BillController();
+            return controller;
+        } else {
+            return controller;
+        }
     }
     /**
      * Shows the patient the user interface for paying bills

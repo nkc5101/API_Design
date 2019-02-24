@@ -24,17 +24,20 @@ public class PrescriptionController {
         this.doctors = new ArrayList<>();
         userInterface = new PrescriptionUI();
         userInterface.viewPrescriptions(PatientController.getPatientController().getPatientList().get(0));
-        this.controller = new PrescriptionController();
+        
     }
     
     public static PrescriptionController getPrescriptionController(){
+        if(controller ==null){
+            controller = new PrescriptionController();
+        }
         return controller;
     }
     /**
      * Adds prescription to the patients list
      * @param prescription 
      */
-    public void addPrescripiton(String prescription){
+    public void addPrescription(String prescription){
         PatientController.getPatientController().getPatientList().get(0).addPrescription(prescription);
     }
     /**

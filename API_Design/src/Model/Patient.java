@@ -93,7 +93,7 @@ public class Patient extends User{
      * @param newAppointment the patient's added appointment
     */
     public void addAppointment(Appointment newAppointment){
-        
+        appointments.add(newAppointment);
     }
     /*
     *Return the patient's appointments
@@ -108,7 +108,7 @@ public class Patient extends User{
     * @param record the new record to add
     */
     public void addRecord(Record record){
-        
+        patientRecords.add(record);
     }
     /**
      * Return the patient's medical records
@@ -130,7 +130,7 @@ public class Patient extends User{
      * @param prescription 
      */
     public void addPrescription(String prescription){
-        
+        prescriptions.add(prescription);
     }
 
     /**

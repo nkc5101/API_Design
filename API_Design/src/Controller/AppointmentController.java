@@ -23,10 +23,13 @@ public class AppointmentController {
     private AppointmentController(){
         this.userInterface = new AppointmentUI();
         userInterface.viewAppointments(PatientController.getPatientController().getPatientList().get(0).getAppointments());
-        controller = new AppointmentController();
+
     }
     
     public static AppointmentController getAppointmentController(){
+        if(controller == null){
+           controller = new AppointmentController();
+        }
         return controller;
     }
     /**
