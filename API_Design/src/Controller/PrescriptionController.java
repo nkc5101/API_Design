@@ -5,45 +5,64 @@
  */
 package Controller;
 
-import Model.Doctor;
-import View.PrescriptionUI;
-import java.util.ArrayList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author nate
  */
 public class PrescriptionController {
-    private PrescriptionUI userInterface;
-    private ArrayList<Doctor> doctors;
+    @FXML
+    private Stage stage;
     private static PrescriptionController controller;
-    /**
-     * Default constructor for PrescriptionController and displays the prescriptions interface
-     */
-    private PrescriptionController(){
-        this.doctors = new ArrayList<>();
-        userInterface = new PrescriptionUI();
-        userInterface.viewPrescriptions(PatientController.getPatientController().getPatientList().get(0));
+    
+    private PrescriptionController(Stage stage){
+        this.stage = stage;
         
     }
     
-    public static PrescriptionController getPrescriptionController(){
-        if(controller ==null){
-            controller = new PrescriptionController();
+     public static PrescriptionController getPrescriptionController(Stage stage) {
+        if (controller != null) {
+            return controller;
+        } else {
+            controller = new PrescriptionController(stage);
         }
         return controller;
+}
+
+    public void setUpViewPrescriptionScene() {
+        Parent root;
+        Scene scene;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("/View/ViewPrescriptionUI.fxml"));
+            scene = new Scene(root, 600, 600);
+            stage.setTitle("Navigation");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+}
     }
-    /**
-     * Adds prescription to the patients list
-     * @param prescription 
-     */
-    public void addPrescription(String prescription){
-        PatientController.getPatientController().getPatientList().get(0).addPrescription(prescription);
+    
+    public void setUpAddPrescriptionScene() {
+        Parent root;
+        Scene scene;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("/View/AddPrescriptionUI.fxml"));
+            scene = new Scene(root, 600, 600);
+            stage.setTitle("Navigation");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+}
     }
-    /**
-     * Sets allows user to see interface for prescribing medication
-     */
-    public void viewPrescriptionForm(){
-        userInterface.viewPrescriptionForm();
-    }
+    
+    
 }

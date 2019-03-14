@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,54 +15,56 @@ import javafx.stage.Stage;
  *
  * @author nate
  */
-public class BillController {
+public class NavController {
+    @FXML
     private Stage stage;
-    private static BillController controller;
-    /**
-     * Default constructor for BillController and sets up user interface
-     */
-    private BillController(Stage stage){
+    private static NavController controller;
+    
+    private NavController(Stage stage){
         this.stage = stage;
-        
+        this.setUpNavScene();
+        this.stage.show();
     }
     
-    public static BillController getBillController(Stage stage){
-        if(controller == null){
-            controller = new BillController(stage);
+     public static NavController getNavController(Stage stage) {
+        if (controller != null) {
+            controller.setUpNavScene();
             return controller;
         } else {
-            return controller;
+            controller = new NavController(stage);
         }
-    }
-    /**
-     * Shows the patient the user interface for paying bills
-     */
-    public void setUpPayBillUI(){
+        return controller;
+}
+
+    public void setUpNavScene() {
         Parent root;
         Scene scene;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("/View/PayBillUI.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/View/NavUI.fxml"));
             scene = new Scene(root, 600, 600);
-            stage.setTitle("Navigation");
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-}
-}
-    public void setUpViewBillUI(){
-        Parent root;
-        Scene scene;
-
-        try {
-            root = FXMLLoader.load(getClass().getResource("/View/ViewBillUI.fxml"));
-            scene = new Scene(root, 600, 600);
-            stage.setTitle("Navigation");
+            stage.setTitle("AlphaCare");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
 }
     }
+    
+    public void setUpLoginScene(){
+        Parent root;
+        Scene scene;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("/View/LoginUI.fxml"));
+            scene = new Scene(root, 600, 600);
+            stage.setTitle("Login");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+    }
+    
+    
 }
