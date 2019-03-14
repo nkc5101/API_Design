@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PayBillUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.201" fx:controller="Controller.PayBillUIController">
     <children>
       <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
         <items>
@@ -32,8 +33,10 @@
             <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
          </items>
       </MenuButton>
-      <Label layoutX="136.0" layoutY="158.0" text="Pay Your Bills Here!">
-         </Label>
+      <Label layoutX="185.0" layoutY="157.0" text="Pay Your Bills Here!">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <Label layoutX="36.0" layoutY="241.0" text="Select one of the buttons to navigate to the different sections of the application" />
       <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
    </children>
