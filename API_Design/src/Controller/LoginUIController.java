@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import Model.Patient;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,9 +40,17 @@ public class LoginUIController implements Initializable {
         stage = (Stage) loginButton.getScene().getWindow();
         String username = usernameField.getText();
         String password = passwordField.getText();
-        
-        if(username.equals("username") && password.equals("password")){
-            NavController.getNavController(stage).setUpNavScene();
+        ArrayList<Patient> patientList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList();
+        for(int i = 0; i < patientList.size(); i++){
+            if(username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())){
+                NavController.getNavController(stage).setUpNavScene();
+            }
         }
+    }
+    
+    @FXML 
+    public void signUpAction(){
+        stage = (Stage) loginButton.getScene().getWindow();
+        NavController.getNavController(stage).setUpSignUpScene();
     }
 }

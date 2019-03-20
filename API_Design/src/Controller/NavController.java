@@ -65,6 +65,21 @@ public class NavController {
             e.printStackTrace();
 }
     }
+
+    void setUpSignUpScene() {
+        Parent root;
+        Scene scene;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("/View/SignUpUI.fxml"));
+            scene = new Scene(root, 600, 600);
+            stage.setTitle("Login");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+    }
     
     
 }

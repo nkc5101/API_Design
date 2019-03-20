@@ -28,12 +28,10 @@ public class Patient extends User{
      * @param lastName
      * @param patientInsurance 
      */
-    public Patient(String username, String password, String email, String firstName, String lastName, InsuranceCompany patientInsurance, Doctor doctor) {
+    public Patient(String username, String password, String email, String firstName, String lastName) {
         super(username, password, email);
         this.firstName =firstName;
         this.lastName = lastName;
-        this.patientInsurance = patientInsurance;
-        this.doctor = doctor;
         this.appointments = new ArrayList<>();
         this.patientRecords = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
