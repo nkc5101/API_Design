@@ -5,7 +5,10 @@
  */
 package Controller;
 
+import Model.Doctor;
+import Model.InsuranceCompany;
 import Model.Patient;
+import Model.Pharmacist;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -38,7 +41,7 @@ public class SignUpUIController implements Initializable {
     private TextField emailField;
     @FXML
     private ComboBox accountType;
-    private ObservableList<String> options = FXCollections.observableArrayList("Patient", "Doctor", "Insurance Company", "Nurse", "Pharmacist");
+    private ObservableList<String> options = FXCollections.observableArrayList("Patient", "Doctor", "Insurance Company", "Pharmacist");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         accountType.getItems().addAll(options);
@@ -54,10 +57,22 @@ public class SignUpUIController implements Initializable {
         String email = emailField.getText();
 
         
-        if((username.equals("")) || (password.equals("")) || (firstName.equals("")) || (lastName.equals("")) || (email.equals(""))){
+        
+        if((username.equals("")) || (password.equals("")) || (firstName.equals("")) || (lastName.equals("")) || (email.equals("")) || (accountType.getValue() == null)){
             errorLabel.setText("Please fill in all the fields");
         } else{
-            PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
+            String typeOfAccount = accountType.getValue().toString();
+            if(typeOfAccount.equals("Patient")){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
+            } else if(typeOfAccount.equals("Doctor")){
+                System.out.println("doctor");
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().add(new Doctor(username, password, email, firstName, lastName, "Hershey Medical Center", "surgeon"));
+            } else if(typeOfAccount.equals("Insurance Company")){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().add(new InsuranceCompany(username, password, email, "AlphaCare", "test"));
+            } else if(typeOfAccount.equals("Pharmacist")){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().add(new Pharmacist(username, password, email, firstName, lastName, "Bayer", "123 E Market S"));
+            }
+            
             NavController.getNavController(stage).setUpLoginScene();
         }
     }

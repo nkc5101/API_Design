@@ -5,7 +5,10 @@
  */
 package Controller;
 
+import Model.Doctor;
+import Model.InsuranceCompany;
 import Model.Patient;
+import Model.Pharmacist;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -41,8 +44,31 @@ public class LoginUIController implements Initializable {
         String username = usernameField.getText();
         String password = passwordField.getText();
         ArrayList<Patient> patientList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList();
+        ArrayList<Doctor> doctorList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList();
+        ArrayList<InsuranceCompany> insuranceList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList();
+        ArrayList<Pharmacist> pharmaList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList();
+        
+        
         for(int i = 0; i < patientList.size(); i++){
             if(username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())){
+                NavController.getNavController(stage).setUpNavScene();
+            }
+        }
+        
+        for(int i =0; i < doctorList.size(); i++){
+            if(username.equals(doctorList.get(i).getUsername()) && password.equals(doctorList.get(i).getPassword())){
+                NavController.getNavController(stage).setUpNavScene();
+            }
+        }
+        
+        for(int i =0; i < insuranceList.size(); i++){
+            if(username.equals(insuranceList.get(i).getUsername()) && password.equals(insuranceList.get(i).getPassword())){
+                NavController.getNavController(stage).setUpNavScene();
+            }
+        }
+        
+        for(int i =0; i < pharmaList.size(); i++){
+            if(username.equals(pharmaList.get(i).getUsername()) && password.equals(pharmaList.get(i).getPassword())){
                 NavController.getNavController(stage).setUpNavScene();
             }
         }

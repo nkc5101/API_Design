@@ -11,16 +11,18 @@ import java.util.ArrayList;
  *
  * @author nate
  */
-public class InsuranceCompany {
+public class InsuranceCompany extends User {
     private String name;
     private String address;
     private ArrayList<Patient> clientList;
     /**
      * Default constructor for Insurance Company
+     * @param username
      * @param name
      * @param address 
      */
-    public InsuranceCompany(String name, String address){
+    public InsuranceCompany(String username, String password, String email, String name, String address){
+        super(username, password, email);
         this.name = name;
         this.address = address;
         this.clientList = new ArrayList<>();
