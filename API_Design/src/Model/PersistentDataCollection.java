@@ -17,6 +17,7 @@ public class PersistentDataCollection {
     private ArrayList<Doctor> doctorList;
     private ArrayList<InsuranceCompany> insuranceList;
     private ArrayList<Pharmacist> pharmaList;
+    private User loggedInUser;
     
     public PersistentDataCollection(){
         patientList = new ArrayList<>();
@@ -55,5 +56,13 @@ public class PersistentDataCollection {
      */
     public ArrayList<Pharmacist> getPharmaList() {
         return pharmaList;
+    }
+    
+    public User getLoggedInUser(){
+        return loggedInUser;
+    }
+    
+    public void setLoggedInUser(User user){
+        this.loggedInUser = user;
     }
 }

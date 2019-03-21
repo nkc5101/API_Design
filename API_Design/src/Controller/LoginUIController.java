@@ -51,24 +51,28 @@ public class LoginUIController implements Initializable {
         
         for(int i = 0; i < patientList.size(); i++){
             if(username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(patientList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
         
         for(int i =0; i < doctorList.size(); i++){
             if(username.equals(doctorList.get(i).getUsername()) && password.equals(doctorList.get(i).getPassword())){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(doctorList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
         
         for(int i =0; i < insuranceList.size(); i++){
             if(username.equals(insuranceList.get(i).getUsername()) && password.equals(insuranceList.get(i).getPassword())){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(insuranceList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
         
         for(int i =0; i < pharmaList.size(); i++){
             if(username.equals(pharmaList.get(i).getUsername()) && password.equals(pharmaList.get(i).getPassword())){
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(pharmaList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }

@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -20,11 +21,33 @@ import javafx.stage.Stage;
 public class AddAppointmentUIController implements Initializable {
 
     @FXML
+    private TextField patientField;
+    @FXML
+    private TextField doctorField;
+    @FXML
+    private TextField dateField;
+    @FXML
+    private TextField timeField;
+    @FXML
+    private TextField roomField;
+    @FXML
+    private TextField hospitalField;
+    @FXML
     private MenuButton appointmentsButton;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-
+    
+    @FXML
+    public void addAppointmentAction(){
+        String patient = patientField.getText();
+        String doctor = doctorField.getText();
+        String time = timeField.getText();
+        String room = roomField.getText();
+        String hospital = hospitalField.getText();
+        
+        PersistentDataController.getPersistentDataController().getPersistentDataCollection();
+    }
     @FXML
     public void viewAppointmentAction(){
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
