@@ -15,28 +15,31 @@ import javafx.stage.Stage;
  * @author nate
  */
 public class BillController {
+
     private Stage stage;
     private static BillController controller;
+
     /**
      * Default constructor for BillController and sets up user interface
      */
-    private BillController(Stage stage){
+    private BillController(Stage stage) {
         this.stage = stage;
-        
+
     }
-    
-    public static BillController getBillController(Stage stage){
-        if(controller == null){
+
+    public static BillController getBillController(Stage stage) {
+        if (controller == null) {
             controller = new BillController(stage);
             return controller;
         } else {
             return controller;
         }
     }
+
     /**
      * Shows the patient the user interface for paying bills
      */
-    public void setUpPayBillUI(){
+    public void setUpPayBillUI() {
         Parent root;
         Scene scene;
 
@@ -48,9 +51,10 @@ public class BillController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
-}
-    public void setUpViewBillUI(){
+        }
+    }
+
+    public void setUpViewBillUI() {
         Parent root;
         Scene scene;
 
@@ -62,6 +66,6 @@ public class BillController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 }

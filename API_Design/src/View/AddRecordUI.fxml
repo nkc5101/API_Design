@@ -9,35 +9,36 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.201" fx:controller="Controller.AddRecordUIController">
     <children>
-      <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#viewAppointmentAction" text="View Appointments" />
-          <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
-        </items>
-      </MenuButton>
-      <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
-            <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
-         </items>
-      </MenuButton>
-      <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
-            <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
-         </items>
-      </MenuButton>
-      <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
-            <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
-         </items>
-      </MenuButton>
-      <Label layoutX="160.0" layoutY="158.0" text="Add Your Records Here!">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label layoutX="36.0" layoutY="241.0" text="Select one of the buttons to navigate to the different sections of the application" />
-      <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
-   </children>
+        <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewAppointmentAction" text="View Appointments" />
+                <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
+            </items>
+        </MenuButton>
+        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
+                <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
+            </items>
+        </MenuButton>
+        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
+                <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
+            </items>
+        </MenuButton>
+        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
+                <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
+            </items>
+        </MenuButton>
+        <Label layoutX="160.0" layoutY="158.0" text="Add Your Records Here!">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="36.0" layoutY="241.0" text="Select one of the buttons to navigate to the different sections of the application" />
+        <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
+    </children>
 </AnchorPane>

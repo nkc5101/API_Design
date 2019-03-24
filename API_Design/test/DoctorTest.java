@@ -16,22 +16,22 @@ import static org.junit.Assert.*;
  * @author markgranatire
  */
 public class DoctorTest {
-    
+
     public DoctorTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }

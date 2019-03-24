@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author nate
  */
-public class API_Design extends Application{
+public class API_Design extends Application {
 
     /**
      * @param args the command line arguments
@@ -32,8 +32,5 @@ public class API_Design extends Application{
         stage.setScene(scene);
         stage.show();
     }
-    
-    
-    
-    
+
 }

@@ -27,6 +27,7 @@ import javafx.stage.Stage;
  * @author nate
  */
 public class SignUpUIController implements Initializable {
+
     @FXML
     private Label errorLabel;
     @FXML
@@ -42,13 +43,14 @@ public class SignUpUIController implements Initializable {
     @FXML
     private ComboBox accountType;
     private ObservableList<String> options = FXCollections.observableArrayList("Patient", "Doctor", "Insurance Company", "Pharmacist");
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         accountType.getItems().addAll(options);
-    }  
-    
+    }
+
     @FXML
-    public void registerAction(){
+    public void registerAction() {
         Stage stage = (Stage) accountType.getScene().getWindow();
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -56,25 +58,23 @@ public class SignUpUIController implements Initializable {
         String lastName = lastNameField.getText();
         String email = emailField.getText();
 
-        
-        
-        if((username.equals("")) || (password.equals("")) || (firstName.equals("")) || (lastName.equals("")) || (email.equals("")) || (accountType.getValue() == null)){
+        if ((username.equals("")) || (password.equals("")) || (firstName.equals("")) || (lastName.equals("")) || (email.equals("")) || (accountType.getValue() == null)) {
             errorLabel.setText("Please fill in all the fields");
-        } else{
+        } else {
             String typeOfAccount = accountType.getValue().toString();
-            if(typeOfAccount.equals("Patient")){
+            if (typeOfAccount.equals("Patient")) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
-            } else if(typeOfAccount.equals("Doctor")){
+            } else if (typeOfAccount.equals("Doctor")) {
                 System.out.println("doctor");
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().add(new Doctor(username, password, email, firstName, lastName, "Hershey Medical Center", "surgeon"));
-            } else if(typeOfAccount.equals("Insurance Company")){
+            } else if (typeOfAccount.equals("Insurance Company")) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().add(new InsuranceCompany(username, password, email, "AlphaCare", "test"));
-            } else if(typeOfAccount.equals("Pharmacist")){
+            } else if (typeOfAccount.equals("Pharmacist")) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().add(new Pharmacist(username, password, email, firstName, lastName, "Bayer", "123 E Market S"));
             }
-            
+
             NavController.getNavController(stage).setUpLoginScene();
         }
     }
-    
+
 }

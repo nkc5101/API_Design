@@ -24,62 +24,63 @@ public class AddRecordUIController implements Initializable {
      */
     @FXML
     private MenuButton appointmentsButton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
 
     @FXML
-    public void viewAppointmentAction(){
+    public void viewAppointmentAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         AppointmentController.getAppointmentController(stage).setUpAppointmentScene();
     }
-    
+
     @FXML
-    public void createAppointmentAction(){
+    public void createAppointmentAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         AppointmentController.getAppointmentController(stage).setUpAddAppointmentScene();
     }
-    
+
     @FXML
-    public void viewRecordAction(){
-         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
-         PatientController.getPatientController(stage).setUpViewRecordsUI();
-    }
-    
-    @FXML
-    public void addRecordAction(){
+    public void viewRecordAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
-         PatientController.getPatientController(stage).setUpAddRecordsUI();
+        PatientController.getPatientController(stage).setUpViewRecordsUI();
     }
-    
+
     @FXML
-    public void viewBillAction(){
+    public void addRecordAction() {
+        Stage stage = (Stage) appointmentsButton.getScene().getWindow();
+        PatientController.getPatientController(stage).setUpAddRecordsUI();
+    }
+
+    @FXML
+    public void viewBillAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         BillController.getBillController(stage).setUpViewBillUI();
     }
-    
+
     @FXML
-    public void payBillAction(){
+    public void payBillAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         BillController.getBillController(stage).setUpPayBillUI();
     }
-    
+
     @FXML
-    public void viewPrescriptionAction(){
+    public void viewPrescriptionAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         PrescriptionController.getPrescriptionController(stage).setUpViewPrescriptionScene();
     }
-    
+
     @FXML
-    public void addPrescriptionAction(){
+    public void addPrescriptionAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         PrescriptionController.getPrescriptionController(stage).setUpAddPrescriptionScene();
     }
-    
+
     @FXML
-    public void logOutAction(){
+    public void logOutAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         NavController.getNavController(stage).setUpLoginScene();
     }
-    
+
 }

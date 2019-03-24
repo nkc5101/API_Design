@@ -9,22 +9,25 @@ package Model;
  *
  * @author nate
  */
-public class Pharmacist extends User{
+public class Pharmacist extends User {
+
     private String firstName;
     private String lastName;
     private String company;
     private String location;
+
     /**
      * Default constructor for Pharmacist
+     *
      * @param username
      * @param password
      * @param email
      * @param firstName
      * @param lastName
      * @param company
-     * @param location 
+     * @param location
      */
-    public Pharmacist(String username, String password, String email, String firstName, String lastName, String company, String location){
+    public Pharmacist(String username, String password, String email, String firstName, String lastName, String company, String location) {
         super(username, password, email);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +37,7 @@ public class Pharmacist extends User{
 
     /**
      * Return the pharmacist first name
+     *
      * @return the firstName
      */
     public String getFirstName() {
@@ -42,6 +46,7 @@ public class Pharmacist extends User{
 
     /**
      * Set the pharmacist first name
+     *
      * @param firstName the firstName to set
      */
     public void setFirstName(String firstName) {
@@ -50,6 +55,7 @@ public class Pharmacist extends User{
 
     /**
      * Return the pharmacist last name
+     *
      * @return the lastName
      */
     public String getLastName() {
@@ -58,6 +64,7 @@ public class Pharmacist extends User{
 
     /**
      * Set the pharmacist last name
+     *
      * @param lastName the lastName to set
      */
     public void setLastName(String lastName) {
@@ -66,6 +73,7 @@ public class Pharmacist extends User{
 
     /**
      * Return the pharmacist company
+     *
      * @return the company
      */
     public String getCompany() {
@@ -74,6 +82,7 @@ public class Pharmacist extends User{
 
     /**
      * Set the pharmacist company
+     *
      * @param company the company to set
      */
     public void setCompany(String company) {
@@ -82,6 +91,7 @@ public class Pharmacist extends User{
 
     /**
      * Return the pharmacist location
+     *
      * @return the location
      */
     public String getLocation() {
@@ -90,6 +100,7 @@ public class Pharmacist extends User{
 
     /**
      * Set the pharmacist location
+     *
      * @param location the location to set
      */
     public void setLocation(String location) {

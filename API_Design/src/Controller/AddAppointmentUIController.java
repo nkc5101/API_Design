@@ -5,10 +5,17 @@
  */
 package Controller;
 
+import Model.Appointment;
+import Model.Doctor;
+import Model.Nurse;
+import Model.Patient;
+import Model.PersistentDataCollection;
+import Model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,6 +27,8 @@ import javafx.stage.Stage;
  */
 public class AddAppointmentUIController implements Initializable {
 
+    @FXML
+    private Label errorLabel;
     @FXML
     private TextField patientField;
     @FXML
@@ -34,72 +43,137 @@ public class AddAppointmentUIController implements Initializable {
     private TextField hospitalField;
     @FXML
     private MenuButton appointmentsButton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    
+
     @FXML
-    public void addAppointmentAction(){
+    public void addAppointmentAction() {
         String patient = patientField.getText();
         String doctor = doctorField.getText();
         String time = timeField.getText();
+        String date = dateField.getText();
         String room = roomField.getText();
         String hospital = hospitalField.getText();
-        
-        PersistentDataController.getPersistentDataController().getPersistentDataCollection();
+        System.out.println("Called");
+        errorLabel.setText("Test");
+        User user = PersistentDataCollection.getPersistentDataCollection().getLoggedInUser();
+        Patient pat = (Patient) user;
+        if (user instanceof Patient) {
+            //Patient pat = (Patient) user;
+            Doctor doc = null;
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
+                if (doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName()) || doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName())) {
+                    doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i);
+                }
+            }
+
+            if (doc != null) {
+                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                errorLabel.setText("Appointment successfully added");
+            } else {
+                errorLabel.setText("Doctor does not exist");
+            }
+        } else if (user instanceof Doctor) {
+            Doctor doc = (Doctor) user;
+            //Patient pat = null;
+
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++) {
+                if (patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName()) || patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName())) {
+                    pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i);
+                }
+            }
+
+            if (pat != null) {
+                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                errorLabel.setText("Appointment successfully added");
+            } else {
+                errorLabel.setText("Patient does not exist");
+            }
+
+        } else if (user instanceof Nurse) {
+            Nurse nur = (Nurse) user;
+            //Patient pat = null;
+            Doctor doc = null;
+
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++) {
+                if (patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName()) || patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName())) {
+                    pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i);
+                }
+            }
+
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
+                if (doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName()) || doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName())) {
+                    doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i);
+                }
+            }
+
+            if (pat != null && doc != null) {
+                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                nur.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                errorLabel.setText("Appointment successfully added");
+            } else {
+                errorLabel.setText("Patient does not exist");
+            }
+        }
     }
+
     @FXML
-    public void viewAppointmentAction(){
+    public void viewAppointmentAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         AppointmentController.getAppointmentController(stage).setUpAppointmentScene();
     }
-    
+
     @FXML
-    public void createAppointmentAction(){
+    public void createAppointmentAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         AppointmentController.getAppointmentController(stage).setUpAddAppointmentScene();
     }
-    
+
     @FXML
-    public void viewRecordAction(){
-         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
-         PatientController.getPatientController(stage).setUpViewRecordsUI();
-    }
-    
-    @FXML
-    public void addRecordAction(){
+    public void viewRecordAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
-         PatientController.getPatientController(stage).setUpAddRecordsUI();
+        PatientController.getPatientController(stage).setUpViewRecordsUI();
     }
-    
+
     @FXML
-    public void viewBillAction(){
+    public void addRecordAction() {
+        Stage stage = (Stage) appointmentsButton.getScene().getWindow();
+        PatientController.getPatientController(stage).setUpAddRecordsUI();
+    }
+
+    @FXML
+    public void viewBillAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         BillController.getBillController(stage).setUpViewBillUI();
     }
-    
+
     @FXML
-    public void payBillAction(){
+    public void payBillAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         BillController.getBillController(stage).setUpPayBillUI();
     }
-    
+
     @FXML
-    public void viewPrescriptionAction(){
+    public void viewPrescriptionAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         PrescriptionController.getPrescriptionController(stage).setUpViewPrescriptionScene();
     }
-    
+
     @FXML
-    public void addPrescriptionAction(){
+    public void addPrescriptionAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         PrescriptionController.getPrescriptionController(stage).setUpAddPrescriptionScene();
     }
-    
+
     @FXML
-    public void logOutAction(){
+    public void logOutAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
         NavController.getNavController(stage).setUpLoginScene();
     }
-    
+
 }

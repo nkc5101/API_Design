@@ -5,18 +5,24 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author nate
  */
-public class Nurse extends User{
+public class Nurse extends User {
+
     private String firstName;
     private String lastName;
     private Doctor doctor;
     private String type;
     private String hospital;
+    private ArrayList<Appointment> appointments;
+
     /**
      * Default constructor for Nurse
+     *
      * @param username
      * @param password
      * @param email
@@ -24,19 +30,21 @@ public class Nurse extends User{
      * @param lastName
      * @param doctor
      * @param type
-     * @param hospital 
+     * @param hospital
      */
-    public Nurse(String username, String password, String email, String firstName, String lastName, Doctor doctor, String type, String hospital){
+    public Nurse(String username, String password, String email, String firstName, String lastName, Doctor doctor, String type, String hospital) {
         super(username, password, email);
         this.firstName = firstName;
         this.lastName = lastName;
         this.doctor = doctor;
         this.type = type;
         this.hospital = hospital;
+        this.appointments = new ArrayList<>();
     }
 
     /**
      * Return the nurse's first name
+     *
      * @return the firstName
      */
     public String getFirstName() {
@@ -45,6 +53,7 @@ public class Nurse extends User{
 
     /**
      * Set the nurse's first name
+     *
      * @param firstName the firstName to set
      */
     public void setFirstName(String firstName) {
@@ -53,6 +62,7 @@ public class Nurse extends User{
 
     /**
      * Return the nurse's last name
+     *
      * @return the lastName
      */
     public String getLastName() {
@@ -61,6 +71,7 @@ public class Nurse extends User{
 
     /**
      * Set the nurse's last name
+     *
      * @param lastName the lastName to set
      */
     public void setLastName(String lastName) {
@@ -69,6 +80,7 @@ public class Nurse extends User{
 
     /**
      * Return the nurse's doctor
+     *
      * @return the doctor
      */
     public Doctor getDoctor() {
@@ -77,6 +89,7 @@ public class Nurse extends User{
 
     /**
      * Set the nurse's doctor
+     *
      * @param doctor the doctor to set
      */
     public void setDoctor(Doctor doctor) {
@@ -85,6 +98,7 @@ public class Nurse extends User{
 
     /**
      * Return the type of nurse
+     *
      * @return the type
      */
     public String getType() {
@@ -93,6 +107,7 @@ public class Nurse extends User{
 
     /**
      * Set the type of nurse
+     *
      * @param type the type to set
      */
     public void setType(String type) {
@@ -101,6 +116,7 @@ public class Nurse extends User{
 
     /**
      * Get the nurse's hospital
+     *
      * @return the hospital
      */
     public String getHospital() {
@@ -109,9 +125,21 @@ public class Nurse extends User{
 
     /**
      * Set the nurse's hospital
+     *
      * @param hospital the hospital to set
      */
     public void setHospital(String hospital) {
         this.hospital = hospital;
+    }
+
+    /**
+     * @return the appointments
+     */
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void addAppointment(Appointment app) {
+        appointments.add(app);
     }
 }

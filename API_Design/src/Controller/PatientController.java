@@ -17,44 +17,51 @@ import javafx.stage.Stage;
  * @author nate
  */
 public class PatientController {
+
     @FXML
     private Stage stage;
-     private static PatientController controller;
+    private static PatientController controller;
+
     /**
-     * Default Constructor for PatientController 
+     * Default Constructor for PatientController
      */
-    private PatientController(Stage stage){
+    private PatientController(Stage stage) {
         this.stage = stage;
     }
-    
-    public static PatientController getPatientController(Stage stage){
-        if(controller == null){
+
+    public static PatientController getPatientController(Stage stage) {
+        if (controller == null) {
             controller = new PatientController(stage);
             return controller;
         } else {
             return controller;
         }
     }
+
     /**
      * Adds patient to list of patients
+     *
      * @param patient patient who is being added
      */
-    public void addPatient(Patient patient){
+    public void addPatient(Patient patient) {
         PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(patient);
     }
+
     /**
      * Remove patient from list of patients
+     *
      * @param index index of patient to be removed
      */
-    public void removePatient(int index){
+    public void removePatient(int index) {
         PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().remove(index);
     }
+
     /**
      * Returns the list of patients
+     *
      * @return the list of patients
      */
-    
-    public void setUpViewRecordsUI(){
+    public void setUpViewRecordsUI() {
         Parent root;
         Scene scene;
 
@@ -66,9 +73,10 @@ public class PatientController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
-    public void setUpAddRecordsUI(){
+
+    public void setUpAddRecordsUI() {
         Parent root;
         Scene scene;
 
@@ -80,6 +88,6 @@ public class PatientController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
-}
+        }
+    }
 }

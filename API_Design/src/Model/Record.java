@@ -10,18 +10,21 @@ package Model;
  * @author nate
  */
 public class Record {
+
     private Appointment appointment;
     private String comments;
     private boolean completed;
     private int price;
+
     /**
      * The default constructor for Record
+     *
      * @param appointment
      * @param comments
-     * @param completed 
-     * @param price 
+     * @param completed
+     * @param price
      */
-    public Record(Appointment appointment, String comments, boolean completed, int price){
+    public Record(Appointment appointment, String comments, boolean completed, int price) {
         this.appointment = appointment;
         this.comments = comments;
         this.completed = completed;
@@ -30,6 +33,7 @@ public class Record {
 
     /**
      * Return the appointment
+     *
      * @return the appointment
      */
     public Appointment getAppointment() {
@@ -38,6 +42,7 @@ public class Record {
 
     /**
      * Set the appointment in the record
+     *
      * @param appointment the appointment to set
      */
     public void setAppointment(Appointment appointment) {
@@ -46,6 +51,7 @@ public class Record {
 
     /**
      * Grab the comments left by the staff and patients
+     *
      * @return the comments
      */
     public String getComments() {
@@ -54,6 +60,7 @@ public class Record {
 
     /**
      * Set the comments left by the staff and patients
+     *
      * @param comments the comments to set
      */
     public void setComments(String comments) {
@@ -62,6 +69,7 @@ public class Record {
 
     /**
      * Return whether the appointment was completed or not
+     *
      * @return the completed
      */
     public boolean isCompleted() {
@@ -70,6 +78,7 @@ public class Record {
 
     /**
      * Set whether the appointment was completed or not
+     *
      * @param completed the completed to set
      */
     public void setCompleted(boolean completed) {
@@ -89,6 +98,5 @@ public class Record {
     public void setPrice(int price) {
         this.price = price;
     }
-    
-    
+
 }

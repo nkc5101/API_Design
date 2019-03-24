@@ -12,28 +12,31 @@ import Model.PersistentDataCollection;
  * @author nate
  */
 public class PersistentDataController {
+
     private static PersistentDataController controller;
     private PersistentDataCollection dataCollection;
+
     /**
-     * Default constructor for PrescriptionController and displays the prescriptions interface
+     * Default constructor for PrescriptionController and displays the
+     * prescriptions interface
      */
-    private PersistentDataController(){
-         readData();
+    private PersistentDataController() {
+        readData();
         if (dataCollection == null) {
             dataCollection = new PersistentDataCollection();
             writeData();
             readData();
-}
+        }
     }
-    
-    public static PersistentDataController getPersistentDataController(){
-        if(controller == null){
+
+    public static PersistentDataController getPersistentDataController() {
+        if (controller == null) {
             controller = new PersistentDataController();
-        } 
+        }
         return controller;
     }
-    
-    public PersistentDataCollection getPersistentDataCollection(){
+
+    public PersistentDataCollection getPersistentDataCollection() {
         return dataCollection;
     }
 

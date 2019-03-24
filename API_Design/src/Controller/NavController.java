@@ -16,17 +16,18 @@ import javafx.stage.Stage;
  * @author nate
  */
 public class NavController {
+
     @FXML
     private Stage stage;
     private static NavController controller;
-    
-    private NavController(Stage stage){
+
+    private NavController(Stage stage) {
         this.stage = stage;
         this.setUpNavScene();
         this.stage.show();
     }
-    
-     public static NavController getNavController(Stage stage) {
+
+    public static NavController getNavController(Stage stage) {
         if (controller != null) {
             controller.setUpNavScene();
             return controller;
@@ -34,7 +35,7 @@ public class NavController {
             controller = new NavController(stage);
         }
         return controller;
-}
+    }
 
     public void setUpNavScene() {
         Parent root;
@@ -48,10 +49,10 @@ public class NavController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
-    
-    public void setUpLoginScene(){
+
+    public void setUpLoginScene() {
         Parent root;
         Scene scene;
 
@@ -63,7 +64,7 @@ public class NavController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
 
     void setUpSignUpScene() {
@@ -78,8 +79,7 @@ public class NavController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
-    
-    
+
 }

@@ -10,45 +10,49 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddAppointmentUIController">
     <children>
-      <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#viewAppointmentAction" text="View Appointments" />
-          <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
-        </items>
-      </MenuButton>
-      <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
-            <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
-         </items>
-      </MenuButton>
-      <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
-            <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
-         </items>
-      </MenuButton>
-      <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
-            <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
-         </items>
-      </MenuButton>
-      <Label layoutX="165.0" layoutY="97.0" text="Add Your Appointment">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label layoutX="160.0" layoutY="154.0" text="Doctor :" />
-      <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
-      <Label layoutX="166.0" layoutY="183.0" text="Date :" />
-      <Label layoutX="166.0" layoutY="213.0" text="Time :" />
-      <Label layoutX="163.0" layoutY="246.0" text="Room :" />
-      <Label layoutX="154.0" layoutY="279.0" text="Hospital :" />
-      <TextField fx:id="doctorField" layoutX="213.0" layoutY="150.0" />
-      <TextField fx:id="dateField" layoutX="213.0" layoutY="179.0" />
-      <Button layoutX="227.0" layoutY="337.0" mnemonicParsing="false" onAction="#addAppointmentAction" text="Add Appointment" />
-      <TextField fx:id="timeField" layoutX="213.0" layoutY="209.0" />
-      <TextField fx:id="roomField" layoutX="213.0" layoutY="242.0" />
-      <TextField fx:id="hospitalField" layoutX="213.0" layoutY="275.0" />
-   </children>
+        <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewAppointmentAction" text="View Appointments" />
+                <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
+            </items>
+        </MenuButton>
+        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
+                <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
+            </items>
+        </MenuButton>
+        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
+                <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
+            </items>
+        </MenuButton>
+        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
+                <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
+            </items>
+        </MenuButton>
+        <Label layoutX="177.0" layoutY="14.0" text="Add Your Appointment">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="160.0" layoutY="154.0" text="Doctor :" />
+        <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
+        <Label layoutX="166.0" layoutY="183.0" text="Date :" />
+        <Label layoutX="166.0" layoutY="213.0" text="Time :" />
+        <Label layoutX="163.0" layoutY="246.0" text="Room :" />
+        <Label layoutX="154.0" layoutY="279.0" text="Hospital :" />
+        <TextField fx:id="doctorField" layoutX="213.0" layoutY="150.0" />
+        <TextField fx:id="dateField" layoutX="213.0" layoutY="179.0" />
+        <Button layoutX="227.0" layoutY="337.0" mnemonicParsing="false" onAction="#addAppointmentAction" text="Add Appointment" />
+        <TextField fx:id="timeField" layoutX="213.0" layoutY="209.0" />
+        <TextField fx:id="roomField" layoutX="213.0" layoutY="242.0" />
+        <TextField fx:id="hospitalField" layoutX="213.0" layoutY="275.0" />
+        <Label fx:id="errorLabel" layoutX="219.0" layoutY="90.0" prefHeight="17.0" prefWidth="137.0" />
+        <Label layoutX="158.0" layoutY="119.0" text="Patient :" />
+        <TextField fx:id="patientField" layoutX="213.0" layoutY="115.0" />
+    </children>
 </AnchorPane>

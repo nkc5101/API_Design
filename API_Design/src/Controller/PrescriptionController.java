@@ -16,23 +16,24 @@ import javafx.stage.Stage;
  * @author nate
  */
 public class PrescriptionController {
+
     @FXML
     private Stage stage;
     private static PrescriptionController controller;
-    
-    private PrescriptionController(Stage stage){
+
+    private PrescriptionController(Stage stage) {
         this.stage = stage;
-        
+
     }
-    
-     public static PrescriptionController getPrescriptionController(Stage stage) {
+
+    public static PrescriptionController getPrescriptionController(Stage stage) {
         if (controller != null) {
             return controller;
         } else {
             controller = new PrescriptionController(stage);
         }
         return controller;
-}
+    }
 
     public void setUpViewPrescriptionScene() {
         Parent root;
@@ -46,9 +47,9 @@ public class PrescriptionController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
-    
+
     public void setUpAddPrescriptionScene() {
         Parent root;
         Scene scene;
@@ -61,8 +62,7 @@ public class PrescriptionController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-}
+        }
     }
-    
-    
+
 }

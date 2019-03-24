@@ -12,16 +12,19 @@ import java.util.ArrayList;
  * @author nate
  */
 public class InsuranceCompany extends User {
+
     private String name;
     private String address;
     private ArrayList<Patient> clientList;
+
     /**
      * Default constructor for Insurance Company
+     *
      * @param username
      * @param name
-     * @param address 
+     * @param address
      */
-    public InsuranceCompany(String username, String password, String email, String name, String address){
+    public InsuranceCompany(String username, String password, String email, String name, String address) {
         super(username, password, email);
         this.name = name;
         this.address = address;
@@ -30,6 +33,7 @@ public class InsuranceCompany extends User {
 
     /**
      * Get the company's name
+     *
      * @return the name
      */
     public String getName() {
@@ -38,6 +42,7 @@ public class InsuranceCompany extends User {
 
     /**
      * Set the company's name
+     *
      * @param name the name to set
      */
     public void setName(String name) {
@@ -46,6 +51,7 @@ public class InsuranceCompany extends User {
 
     /**
      * Return the company's address
+     *
      * @return the address
      */
     public String getAddress() {
@@ -54,6 +60,7 @@ public class InsuranceCompany extends User {
 
     /**
      * Set the company's address
+     *
      * @param address the address to set
      */
     public void setAddress(String address) {
@@ -62,17 +69,19 @@ public class InsuranceCompany extends User {
 
     /**
      * Return the client list
+     *
      * @return the clientList
      */
     public ArrayList<Patient> getClientList() {
         return clientList;
     }
-    
+
     /**
      * Add a client to the Patient list
-     * @param patient 
+     *
+     * @param patient
      */
-    public void addClient(Patient patient){
-        
+    public void addClient(Patient patient) {
+
     }
 }
