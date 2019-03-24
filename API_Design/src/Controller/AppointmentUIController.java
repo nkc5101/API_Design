@@ -18,7 +18,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -28,22 +31,36 @@ import javafx.stage.Stage;
 public class AppointmentUIController implements Initializable {
 
     @FXML
-    private ListView appointmentsList;
+    private TableView<Appointment> appointmentsTable = new TableView<Appointment>();
+    @FXML
+    private TableColumn<Appointment, String> appointmentDate = new TableColumn("Date");
+    @FXML
+    private TableColumn<Appointment, String> appointmentTime = new TableColumn("Time");
+    @FXML
+    private TableColumn<Appointment, String> appointmentHospital = new TableColumn("Hospital");
     @FXML
     private MenuButton appointmentsButton;
-    private User user = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInUser();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (user instanceof Patient) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(((Patient) user).getAppointments());
-            appointmentsList.setItems(appointments);
-        } else if (user instanceof Doctor) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(((Doctor) user).getAppointments());
-            appointmentsList.setItems(appointments);
-        } else if (user instanceof Nurse) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(((Nurse) user).getAppointments());
-            appointmentsList.setItems(appointments);
+        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() != null) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient().getAppointments());
+            appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+            appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
+            appointmentsTable.setItems(appointments);
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() != null) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor().getAppointments());
+            appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+            appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
+            appointmentsTable.setItems(appointments);
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() != null) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse().getAppointments());
+            appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+            appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
+            appointmentsTable.setItems(appointments);
         }
     }
 

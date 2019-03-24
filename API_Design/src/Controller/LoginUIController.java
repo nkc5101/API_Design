@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Doctor;
 import Model.InsuranceCompany;
+import Model.Nurse;
 import Model.Patient;
 import Model.Pharmacist;
 import java.net.URL;
@@ -49,31 +50,39 @@ public class LoginUIController implements Initializable {
         ArrayList<Doctor> doctorList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList();
         ArrayList<InsuranceCompany> insuranceList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList();
         ArrayList<Pharmacist> pharmaList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList();
+        ArrayList<Nurse> nurseList = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList();
 
         for (int i = 0; i < patientList.size(); i++) {
             if (username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(patientList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPatient(patientList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
 
         for (int i = 0; i < doctorList.size(); i++) {
             if (username.equals(doctorList.get(i).getUsername()) && password.equals(doctorList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(doctorList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInDoctor(doctorList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
 
         for (int i = 0; i < insuranceList.size(); i++) {
             if (username.equals(insuranceList.get(i).getUsername()) && password.equals(insuranceList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(insuranceList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInInsure(insuranceList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
 
         for (int i = 0; i < pharmaList.size(); i++) {
             if (username.equals(pharmaList.get(i).getUsername()) && password.equals(pharmaList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInUser(pharmaList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPharma(pharmaList.get(i));
+                NavController.getNavController(stage).setUpNavScene();
+            }
+        }
+        
+        for (int i = 0; i < nurseList.size(); i++) {
+            if (username.equals(nurseList.get(i).getUsername()) && password.equals(nurseList.get(i).getPassword())) {
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInNurse(nurseList.get(i));
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
