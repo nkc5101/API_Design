@@ -20,6 +20,7 @@ public abstract class User {
      *
      * @param username
      * @param password
+     * @param email
      */
     public User(String username, String password, String email) {
         this.username = username;

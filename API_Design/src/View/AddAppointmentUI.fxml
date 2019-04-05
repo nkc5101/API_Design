@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -45,14 +47,14 @@
         <Label layoutX="166.0" layoutY="213.0" text="Time :" />
         <Label layoutX="163.0" layoutY="246.0" text="Room :" />
         <Label layoutX="154.0" layoutY="279.0" text="Hospital :" />
-        <TextField fx:id="doctorField" layoutX="213.0" layoutY="150.0" />
-        <TextField fx:id="dateField" layoutX="213.0" layoutY="179.0" />
         <Button layoutX="227.0" layoutY="337.0" mnemonicParsing="false" onAction="#addAppointmentAction" text="Add Appointment" />
-        <TextField fx:id="timeField" layoutX="213.0" layoutY="209.0" />
-        <TextField fx:id="roomField" layoutX="213.0" layoutY="242.0" />
-        <TextField fx:id="hospitalField" layoutX="213.0" layoutY="275.0" />
         <Label fx:id="errorLabel" layoutX="219.0" layoutY="90.0" prefHeight="17.0" prefWidth="137.0" />
         <Label layoutX="158.0" layoutY="119.0" text="Patient :" />
         <TextField fx:id="patientField" layoutX="213.0" layoutY="115.0" />
+      <ComboBox fx:id="doctorBox" layoutX="212.0" layoutY="150.0" prefWidth="150.0" />
+      <ComboBox fx:id="roomBox" layoutX="213.0" layoutY="242.0" prefWidth="150.0" />
+      <ComboBox fx:id="hospitalBox" layoutX="213.0" layoutY="275.0" prefWidth="150.0" />
+      <DatePicker fx:id="date" layoutX="201.0" layoutY="179.0" />
+      <ComboBox fx:id="timeBox" layoutX="212.0" layoutY="209.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

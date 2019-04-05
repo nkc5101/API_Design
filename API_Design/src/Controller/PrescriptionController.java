@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,8 +46,8 @@ public class PrescriptionController {
             stage.setTitle("Navigation");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 
@@ -60,8 +61,8 @@ public class PrescriptionController {
             stage.setTitle("Navigation");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 

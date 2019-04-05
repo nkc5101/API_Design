@@ -17,7 +17,7 @@ public class Doctor extends User {
     private String lastName;
     private String hospital;
     private String specialty;
-    private ArrayList<Appointment> appointments;
+    private final ArrayList<Appointment> appointments;
 
     /**
      * Default constructor for Doctor

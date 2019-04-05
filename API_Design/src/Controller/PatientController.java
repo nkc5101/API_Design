@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Patient;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 public class PatientController {
 
     @FXML
-    private Stage stage;
+    private final Stage stage;
     private static PatientController controller;
 
     /**
@@ -59,7 +60,6 @@ public class PatientController {
     /**
      * Returns the list of patients
      *
-     * @return the list of patients
      */
     public void setUpViewRecordsUI() {
         Parent root;
@@ -71,8 +71,8 @@ public class PatientController {
             stage.setTitle("Records");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 
@@ -86,8 +86,8 @@ public class PatientController {
             stage.setTitle("View Record");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 }

@@ -18,7 +18,7 @@ public class Nurse extends User {
     private Doctor doctor;
     private String type;
     private String hospital;
-    private ArrayList<Appointment> appointments;
+    private final ArrayList<Appointment> appointments;
 
     /**
      * Default constructor for Nurse

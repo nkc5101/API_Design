@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class AppointmentController {
 
     @FXML
-    private Stage stage;
+    private final Stage stage;
     private static AppointmentController controller;
 
     /**

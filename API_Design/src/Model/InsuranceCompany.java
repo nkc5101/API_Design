@@ -15,12 +15,14 @@ public class InsuranceCompany extends User {
 
     private String name;
     private String address;
-    private ArrayList<Patient> clientList;
+    private final ArrayList<Patient> clientList;
 
     /**
      * Default constructor for Insurance Company
      *
      * @param username
+     * @param password
+     * @param email
      * @param name
      * @param address
      */

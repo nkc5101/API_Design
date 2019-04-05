@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,8 +50,8 @@ public class BillController {
             stage.setTitle("Navigation");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 
@@ -64,8 +65,8 @@ public class BillController {
             stage.setTitle("Navigation");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 }

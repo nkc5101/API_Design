@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class PersistentDataCollection {
 
     private static PersistentDataCollection dataCollection;
-    private ArrayList<Patient> patientList;
-    private ArrayList<Doctor> doctorList;
-    private ArrayList<InsuranceCompany> insuranceList;
-    private ArrayList<Pharmacist> pharmaList;
-    private ArrayList<Nurse> nurseList;
+    private final ArrayList<Patient> patientList;
+    private final ArrayList<Doctor> doctorList;
+    private final ArrayList<InsuranceCompany> insuranceList;
+    private final ArrayList<Pharmacist> pharmaList;
+    private final ArrayList<Nurse> nurseList;
     private Patient loggedInPatient;
     private Doctor loggedInDoctor;
     private Nurse loggedInNurse;

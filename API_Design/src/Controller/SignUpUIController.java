@@ -42,7 +42,7 @@ public class SignUpUIController implements Initializable {
     private TextField emailField;
     @FXML
     private ComboBox accountType;
-    private ObservableList<String> options = FXCollections.observableArrayList("Patient", "Doctor", "Insurance Company", "Pharmacist");
+    private final ObservableList<String> options = FXCollections.observableArrayList("Patient", "Doctor", "Insurance Company", "Pharmacist");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,15 +62,22 @@ public class SignUpUIController implements Initializable {
             errorLabel.setText("Please fill in all the fields");
         } else {
             String typeOfAccount = accountType.getValue().toString();
-            if (typeOfAccount.equals("Patient")) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
-            } else if (typeOfAccount.equals("Doctor")) {
-                System.out.println("doctor");
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().add(new Doctor(username, password, email, firstName, lastName, "Hershey Medical Center", "surgeon"));
-            } else if (typeOfAccount.equals("Insurance Company")) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().add(new InsuranceCompany(username, password, email, "AlphaCare", "test"));
-            } else if (typeOfAccount.equals("Pharmacist")) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().add(new Pharmacist(username, password, email, firstName, lastName, "Bayer", "123 E Market S"));
+            switch (typeOfAccount) {
+                case "Patient":
+                    PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
+                    break;
+                case "Doctor":
+                    System.out.println("doctor");
+                    PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().add(new Doctor(username, password, email, firstName, lastName, "Hershey Medical Center", "surgeon"));
+                    break;
+                case "Insurance Company":
+                    PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().add(new InsuranceCompany(username, password, email, "AlphaCare", "test"));
+                    break;
+                case "Pharmacist":
+                    PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().add(new Pharmacist(username, password, email, firstName, lastName, "Bayer", "123 E Market S"));
+                    break;
+                default:
+                    break;
             }
 
             NavController.getNavController(stage).setUpLoginScene();

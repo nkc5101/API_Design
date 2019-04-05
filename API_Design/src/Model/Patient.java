@@ -17,9 +17,9 @@ public class Patient extends User {
     private String lastName;
     private InsuranceCompany patientInsurance;
     private Doctor doctor;
-    private ArrayList<Appointment> appointments;
-    private ArrayList<Record> patientRecords;
-    private ArrayList<String> prescriptions;
+    private final ArrayList<Appointment> appointments;
+    private final ArrayList<Record> patientRecords;
+    private final ArrayList<String> prescriptions;
 
     /**
      * Default constructor for Patient
@@ -29,7 +29,6 @@ public class Patient extends User {
      * @param email
      * @param firstName
      * @param lastName
-     * @param patientInsurance
      */
     public Patient(String username, String password, String email, String firstName, String lastName) {
         super(username, password, email);

@@ -10,9 +10,12 @@ import Model.Doctor;
 import Model.Nurse;
 import Model.Patient;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
@@ -30,30 +33,53 @@ public class AddAppointmentUIController implements Initializable {
     @FXML
     private TextField patientField;
     @FXML
-    private TextField doctorField;
+    private ComboBox doctorBox;
     @FXML
-    private TextField dateField;
+    private DatePicker date;
     @FXML
-    private TextField timeField;
+    private ComboBox timeBox;
     @FXML
-    private TextField roomField;
+    private ComboBox roomBox;
     @FXML
-    private TextField hospitalField;
+    private ComboBox hospitalBox;
     @FXML
     private MenuButton appointmentsButton;
+    private final ArrayList<String> docOptions = new ArrayList<>();
+    private final ArrayList<String> timeOptions = new ArrayList<>();
+    private final ArrayList<String> roomOptions= new ArrayList<>();
+    private final ArrayList<String> hospitalOptions= new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++){
+            docOptions.add(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName() + " " + PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName());
+        }
+        roomOptions.add("111");
+        roomOptions.add("112");
+        roomOptions.add("113");
+        
+        timeOptions.add("12:00");
+        timeOptions.add("1:00");
+        timeOptions.add("2:00");
+        
+        hospitalOptions.add("Hershey Medical Center");
+        hospitalOptions.add("Geisinger");
+        hospitalOptions.add("Mount Nittany Medical Center");
+        
+        doctorBox.getItems().addAll(docOptions);
+        timeBox.getItems().addAll(timeOptions);
+        roomBox.getItems().addAll(roomOptions);
+        hospitalBox.getItems().addAll(hospitalOptions);
     }
 
     @FXML
     public void addAppointmentAction() {
         String patient = patientField.getText();
-        String doctor = doctorField.getText();
-        String time = timeField.getText();
-        String date = dateField.getText();
-        String room = roomField.getText();
-        String hospital = hospitalField.getText();
+        String doctor = doctorBox.getValue().toString();
+        String time = timeBox.getValue().toString();
+        String dateVal = date.getValue().toString();
+        String room = roomBox.getValue().toString();
+        String hospital = hospitalBox.getValue().toString();
        if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() != null){
            Doctor doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor();
            Patient pat = null;
@@ -64,8 +90,8 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (pat != null) {
-                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
             } else {
                 errorLabel.setText("Patient does not exist");
@@ -81,9 +107,10 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (doc != null) {
-                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
+                System.out.println(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient().getAppointments().size());
             } else {
                 errorLabel.setText("Doctor does not exist");
             }
@@ -105,9 +132,9 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (pat != null && doc != null) {
-                doc.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
-                nur.addAppointment(new Appointment(pat, doc, date, time, room, hospital));
+                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                nur.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
             } else {
                 errorLabel.setText("Patient does not exist");
