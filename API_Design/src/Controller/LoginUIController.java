@@ -56,7 +56,6 @@ public class LoginUIController implements Initializable {
             if (username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPatient(i);
                 NavController.getNavController(stage).setUpNavScene();
-                System.out.println(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient());
             }
         }
 
