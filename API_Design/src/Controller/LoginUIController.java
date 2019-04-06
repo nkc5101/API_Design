@@ -54,35 +54,36 @@ public class LoginUIController implements Initializable {
 
         for (int i = 0; i < patientList.size(); i++) {
             if (username.equals(patientList.get(i).getUsername()) && password.equals(patientList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPatient(patientList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPatient(i);
                 NavController.getNavController(stage).setUpNavScene();
+                System.out.println(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient());
             }
         }
 
         for (int i = 0; i < doctorList.size(); i++) {
             if (username.equals(doctorList.get(i).getUsername()) && password.equals(doctorList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInDoctor(doctorList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInDoctor(i);
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
 
         for (int i = 0; i < insuranceList.size(); i++) {
             if (username.equals(insuranceList.get(i).getUsername()) && password.equals(insuranceList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInInsure(insuranceList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInInsure(i);
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
 
         for (int i = 0; i < pharmaList.size(); i++) {
             if (username.equals(pharmaList.get(i).getUsername()) && password.equals(pharmaList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPharma(pharmaList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInPharma(i);
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
         
         for (int i = 0; i < nurseList.size(); i++) {
             if (username.equals(nurseList.get(i).getUsername()) && password.equals(nurseList.get(i).getPassword())) {
-                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInNurse(nurseList.get(i));
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInNurse(i);
                 NavController.getNavController(stage).setUpNavScene();
             }
         }

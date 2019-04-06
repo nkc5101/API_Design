@@ -12,6 +12,8 @@ import Model.Patient;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -44,27 +46,18 @@ public class AddAppointmentUIController implements Initializable {
     private ComboBox hospitalBox;
     @FXML
     private MenuButton appointmentsButton;
-    private final ArrayList<String> docOptions = new ArrayList<>();
-    private final ArrayList<String> timeOptions = new ArrayList<>();
-    private final ArrayList<String> roomOptions= new ArrayList<>();
-    private final ArrayList<String> hospitalOptions= new ArrayList<>();
+    private final ObservableList<String> docOptions = FXCollections.observableArrayList();
+    private final ObservableList<String> timeOptions = FXCollections.observableArrayList("12:00", "1:00", "2:00");
+    private final ObservableList<String> roomOptions = FXCollections.observableArrayList("111", "112", "113");
+    private final ObservableList<String> hospitalOptions = FXCollections.observableArrayList("Hershey Medical Center", "Geisinger", "Mount Nittany Medical Center");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++){
             docOptions.add(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName() + " " + PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName());
         }
-        roomOptions.add("111");
-        roomOptions.add("112");
-        roomOptions.add("113");
         
-        timeOptions.add("12:00");
-        timeOptions.add("1:00");
-        timeOptions.add("2:00");
         
-        hospitalOptions.add("Hershey Medical Center");
-        hospitalOptions.add("Geisinger");
-        hospitalOptions.add("Mount Nittany Medical Center");
         
         doctorBox.getItems().addAll(docOptions);
         timeBox.getItems().addAll(timeOptions);
@@ -80,8 +73,8 @@ public class AddAppointmentUIController implements Initializable {
         String dateVal = date.getValue().toString();
         String room = roomBox.getValue().toString();
         String hospital = hospitalBox.getValue().toString();
-       if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() != null){
-           Doctor doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor();
+       if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0){
+           Doctor doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor());
            Patient pat = null;
            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++) {
                 if (patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName()) || patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName())) {
@@ -93,11 +86,12 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
+                
             } else {
                 errorLabel.setText("Patient does not exist");
             }
-       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() != null){
-           Patient pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient();
+       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0){
+           Patient pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient());
            Doctor doc = null;
            
            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
@@ -110,12 +104,12 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
-                System.out.println(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient().getAppointments().size());
+                
             } else {
                 errorLabel.setText("Doctor does not exist");
             }
-       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() != null){
-           Nurse nur = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse();
+       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() >= 0){
+           Nurse nur = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse());
             Patient pat = null;
             Doctor doc = null;
 

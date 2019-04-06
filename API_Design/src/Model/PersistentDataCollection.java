@@ -19,11 +19,11 @@ public class PersistentDataCollection {
     private final ArrayList<InsuranceCompany> insuranceList;
     private final ArrayList<Pharmacist> pharmaList;
     private final ArrayList<Nurse> nurseList;
-    private Patient loggedInPatient;
-    private Doctor loggedInDoctor;
-    private Nurse loggedInNurse;
-    private InsuranceCompany loggedInInsure;
-    private Pharmacist loggedInPharma;
+    private int loggedInPatient;
+    private int loggedInDoctor;
+    private int loggedInNurse;
+    private int loggedInInsure;
+    private int loggedInPharma;
 
     public PersistentDataCollection() {
         patientList = new ArrayList<>();
@@ -36,11 +36,11 @@ public class PersistentDataCollection {
         insuranceList.add(new InsuranceCompany("insurance", "sucks", "insurance@email.com", "ATZ Healthcare", "123 E Main St"));
         pharmaList.add(new Pharmacist("pharma", "password", "pharma@email.com", "John", "Doe", "Bayer", "Giant Pharmacy"));
         nurseList.add(new Nurse("nurse", "password", "nurse@email.com", "Jennifer", "James", doctorList.get(0), "General", "Hershey"));
-        loggedInPatient = null;
-        loggedInDoctor = null;
-        loggedInNurse = null;
-        loggedInInsure = null;
-        loggedInPharma = null;
+        loggedInPatient = -1;
+        loggedInDoctor = -1;
+        loggedInNurse = -1;
+        loggedInInsure = -1;
+        loggedInPharma = -1;
     }
 
     public static PersistentDataCollection getPersistentDataCollection() {
@@ -87,70 +87,70 @@ public class PersistentDataCollection {
     /**
      * @return the loggedInPatient
      */
-    public Patient getLoggedInPatient() {
+    public int getLoggedInPatient() {
         return loggedInPatient;
     }
 
     /**
      * @param loggedInPatient the loggedInPatient to set
      */
-    public void setLoggedInPatient(Patient loggedInPatient) {
+    public void setLoggedInPatient(int loggedInPatient) {
         this.loggedInPatient = loggedInPatient;
     }
 
     /**
      * @return the loggedInDoctor
      */
-    public Doctor getLoggedInDoctor() {
+    public int getLoggedInDoctor() {
         return loggedInDoctor;
     }
 
     /**
      * @param loggedInDoctor the loggedInDoctor to set
      */
-    public void setLoggedInDoctor(Doctor loggedInDoctor) {
+    public void setLoggedInDoctor(int loggedInDoctor) {
         this.loggedInDoctor = loggedInDoctor;
     }
 
     /**
      * @return the loggedInNurse
      */
-    public Nurse getLoggedInNurse() {
+    public int getLoggedInNurse() {
         return loggedInNurse;
     }
 
     /**
      * @param loggedInNurse the loggedInNurse to set
      */
-    public void setLoggedInNurse(Nurse loggedInNurse) {
+    public void setLoggedInNurse(int loggedInNurse) {
         this.loggedInNurse = loggedInNurse;
     }
 
     /**
      * @return the loggedInInsure
      */
-    public InsuranceCompany getLoggedInInsure() {
+    public int getLoggedInInsure() {
         return loggedInInsure;
     }
 
     /**
      * @param loggedInInsure the loggedInInsure to set
      */
-    public void setLoggedInInsure(InsuranceCompany loggedInInsure) {
+    public void setLoggedInInsure(int loggedInInsure) {
         this.loggedInInsure = loggedInInsure;
     }
 
     /**
      * @return the loggedInPharma
      */
-    public Pharmacist getLoggedInPharma() {
+    public int getLoggedInPharma() {
         return loggedInPharma;
     }
 
     /**
      * @param loggedInPharma the loggedInPharma to set
      */
-    public void setLoggedInPharma(Pharmacist loggedInPharma) {
+    public void setLoggedInPharma(int loggedInPharma) {
         this.loggedInPharma = loggedInPharma;
     }
 }

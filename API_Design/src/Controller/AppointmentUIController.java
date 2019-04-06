@@ -28,30 +28,30 @@ public class AppointmentUIController implements Initializable {
     @FXML
     private final TableView<Appointment> appointmentsTable = new TableView<Appointment>();
     @FXML
-    private final TableColumn<Appointment, String> appointmentDate = new TableColumn("Date");
+    private final TableColumn<Appointment, String> appointmentDate = new TableColumn<>("Date");
     @FXML
-    private final TableColumn<Appointment, String> appointmentTime = new TableColumn("Time");
+    private final TableColumn<Appointment, String> appointmentTime = new TableColumn<>("Time");
     @FXML
-    private final TableColumn<Appointment, String> appointmentHospital = new TableColumn("Hospital");
+    private final TableColumn<Appointment, String> appointmentHospital = new TableColumn<>("Hospital");
     @FXML
     private MenuButton appointmentsButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() != null) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient().getAppointments());
+        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getAppointments());
             appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
             appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
             appointmentsTable.setItems(appointments);
-        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() != null) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor().getAppointments());
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor()).getAppointments());
             appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
             appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
             appointmentsTable.setItems(appointments);
-        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() != null) {
-            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse().getAppointments());
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() >= 0) {
+            ObservableList<Appointment> appointments = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse()).getAppointments());
             appointmentDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             appointmentTime.setCellValueFactory(new PropertyValueFactory<>("time"));
             appointmentHospital.setCellValueFactory(new PropertyValueFactory<>("hospital"));
