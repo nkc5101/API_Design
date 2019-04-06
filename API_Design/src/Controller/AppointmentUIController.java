@@ -26,13 +26,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class AppointmentUIController implements Initializable {
 
     @FXML
-    private final TableView<Appointment> appointmentsTable = new TableView<Appointment>();
+    private TableView<Appointment> appointmentsTable;
     @FXML
-    private final TableColumn<Appointment, String> appointmentDate = new TableColumn<>("Date");
+    private TableColumn<Appointment, String> appointmentDate;
     @FXML
-    private final TableColumn<Appointment, String> appointmentTime = new TableColumn<>("Time");
+    private TableColumn<Appointment, String> appointmentTime;
     @FXML
-    private final TableColumn<Appointment, String> appointmentHospital = new TableColumn<>("Hospital");
+    private TableColumn<Appointment, String> appointmentHospital;
     @FXML
     private MenuButton appointmentsButton;
 
