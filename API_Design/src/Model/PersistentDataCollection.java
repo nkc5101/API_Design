@@ -24,6 +24,7 @@ public class PersistentDataCollection {
     private int loggedInNurse;
     private int loggedInInsure;
     private int loggedInPharma;
+    private int selectedRecord;
 
     public PersistentDataCollection() {
         patientList = new ArrayList<>();
@@ -74,8 +75,6 @@ public class PersistentDataCollection {
     public ArrayList<Pharmacist> getPharmaList() {
         return pharmaList;
     }
-
-    
 
     /**
      * @return the nurseList
@@ -152,5 +151,17 @@ public class PersistentDataCollection {
      */
     public void setLoggedInPharma(int loggedInPharma) {
         this.loggedInPharma = loggedInPharma;
+    }
+
+    public void setSelectedRecord(Record record) {
+        for (int i = 0; i < patientList.get(loggedInPatient).getPatientRecords().size(); i++) {
+            if (patientList.get(loggedInPatient).getPatientRecords().get(i).getComments().equals(record.getComments())) {
+                selectedRecord = i;
+            }
+        }
+    }
+
+    public int getSelectedRecord() {
+        return selectedRecord;
     }
 }

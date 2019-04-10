@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Record;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,7 @@ import javafx.stage.Stage;
  */
 public class BillController {
 
-    private Stage stage;
+    private final Stage stage;
     private static BillController controller;
 
     /**
@@ -45,9 +46,10 @@ public class BillController {
         Scene scene;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("/View/PayBillUI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/PayBillUI.fxml"));
+            root = (Parent) fxmlLoader.load();
             scene = new Scene(root, 600, 600);
-            stage.setTitle("Navigation");
+            stage.setTitle("Pay Bill");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -62,7 +64,7 @@ public class BillController {
         try {
             root = FXMLLoader.load(getClass().getResource("/View/ViewBillUI.fxml"));
             scene = new Scene(root, 600, 600);
-            stage.setTitle("Navigation");
+            stage.setTitle("View Bill");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

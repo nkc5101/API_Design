@@ -10,7 +10,6 @@ import Model.Doctor;
 import Model.Nurse;
 import Model.Patient;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,12 +52,10 @@ public class AddAppointmentUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++){
+        for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
             docOptions.add(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName() + " " + PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName());
         }
-        
-        
-        
+
         doctorBox.getItems().addAll(docOptions);
         timeBox.getItems().addAll(timeOptions);
         roomBox.getItems().addAll(roomOptions);
@@ -73,10 +70,10 @@ public class AddAppointmentUIController implements Initializable {
         String dateVal = date.getValue().toString();
         String room = roomBox.getValue().toString();
         String hospital = hospitalBox.getValue().toString();
-       if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0){
-           Doctor doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor());
-           Patient pat = null;
-           for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++) {
+        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0) {
+            Doctor doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor());
+            Patient pat = null;
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++) {
                 if (patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName()) || patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName())) {
                     pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i);
                 }
@@ -86,15 +83,15 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
-                
+
             } else {
                 errorLabel.setText("Patient does not exist");
             }
-       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0){
-           Patient pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient());
-           Doctor doc = null;
-           
-           for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0) {
+            Patient pat = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient());
+            Doctor doc = null;
+
+            for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().size(); i++) {
                 if (doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getLastName()) || doctor.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i).getFirstName())) {
                     doc = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(i);
                 }
@@ -104,12 +101,12 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 errorLabel.setText("Appointment successfully added");
-                
+
             } else {
                 errorLabel.setText("Doctor does not exist");
             }
-       } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() >= 0){
-           Nurse nur = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse());
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse() >= 0) {
+            Nurse nur = PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse());
             Patient pat = null;
             Doctor doc = null;
 
@@ -134,8 +131,7 @@ public class AddAppointmentUIController implements Initializable {
                 errorLabel.setText("Patient does not exist");
             }
         }
-       }
-        
+    }
 
     @FXML
     public void viewAppointmentAction() {

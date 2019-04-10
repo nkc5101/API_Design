@@ -5,11 +5,14 @@
  */
 package Controller;
 
+import Model.CreditCard;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -20,10 +23,39 @@ import javafx.stage.Stage;
 public class PayBillUIController implements Initializable {
 
     @FXML
+    private TextField amountField;
+    @FXML
+    private TextField creditCardField;
+    @FXML
+    private TextField ccvField;
+    @FXML
+    private TextField nameField;
+    @FXML
     private MenuButton appointmentsButton;
+    @FXML
+    private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().size() <= 0) {
+            errorLabel.setText("No Bills are due");
+        } else {
+            amountField.setText(Integer.toString(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getSelectedRecord()).getPrice()));
+        }
+    }
+
+    @FXML
+    public void payBill() {
+        String creditCard = creditCardField.getText();
+        String ccv = ccvField.getText();
+        String name = nameField.getText();
+
+        for (int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().size(); i++) {
+            if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(i).getComments().equals(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getSelectedRecord()).getComments())) {
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(i).setPrice(0);
+                PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).addCreditCard(new CreditCard(creditCard, ccv, name));
+            }
+        }
     }
 
     @FXML

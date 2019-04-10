@@ -79,7 +79,7 @@ public class LoginUIController implements Initializable {
                 NavController.getNavController(stage).setUpNavScene();
             }
         }
-        
+
         for (int i = 0; i < nurseList.size(); i++) {
             if (username.equals(nurseList.get(i).getUsername()) && password.equals(nurseList.get(i).getPassword())) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().setLoggedInNurse(i);

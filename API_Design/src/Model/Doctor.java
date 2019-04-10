@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author nate
  */
 public class Doctor extends User {
-    
+
     private String firstName;
     private String lastName;
     private String hospital;
@@ -117,9 +117,9 @@ public class Doctor extends User {
     public ArrayList<Appointment> getAppointments() {
         return appointments;
     }
-    
+
     public void addAppointment(Appointment app) {
         appointments.add(app);
     }
-    
+
 }

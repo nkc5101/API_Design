@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewBillUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewBillUIController">
     <children>
         <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
             <items>
@@ -41,14 +41,15 @@
             </font>
         </Label>
         <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
-      <TableView fx:id="billTable" layoutX="126.0" layoutY="131.0" prefHeight="200.0" prefWidth="349.0">
-        <columns>
-          <TableColumn fx:id="billDate" prefWidth="97.0" text="Date" />
-          <TableColumn fx:id="billCompleted" prefWidth="111.0" text="Attended" />
-            <TableColumn fx:id="billBalance" prefWidth="140.0" text="Balance" />
-        </columns>
-      </TableView>
-      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#viewBill" text="View Bill" />
-      <Label fx:id="errorLabel" layoutX="169.0" layoutY="97.0" prefHeight="17.0" prefWidth="246.0" />
+        <TableView fx:id="billTable" layoutX="126.0" layoutY="131.0" prefHeight="200.0" prefWidth="349.0">
+            <columns>
+                <TableColumn fx:id="billDate" prefWidth="97.0" text="Date" />
+                <TableColumn fx:id="billCompleted" prefWidth="111.0" text="Attended" />
+                <TableColumn fx:id="billBalance" prefWidth="140.0" text="Balance" />
+            </columns>
+        </TableView>
+        <Button layoutX="174.0" layoutY="349.0" mnemonicParsing="false" onAction="#viewBill" text="View Bill" />
+        <Label fx:id="errorLabel" layoutX="169.0" layoutY="97.0" prefHeight="17.0" prefWidth="246.0" />
+        <Button layoutX="337.0" layoutY="349.0" mnemonicParsing="false" onAction="#payBill" text="Pay Bill" />
     </children>
 </AnchorPane>

@@ -20,6 +20,7 @@ public class Patient extends User {
     private final ArrayList<Appointment> appointments;
     private final ArrayList<Record> patientRecords;
     private final ArrayList<String> prescriptions;
+    private final ArrayList<CreditCard> creditCards;
 
     /**
      * Default constructor for Patient
@@ -37,6 +38,7 @@ public class Patient extends User {
         this.appointments = new ArrayList<>();
         this.patientRecords = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
+        this.creditCards = new ArrayList<>();
 
     }
 
@@ -159,6 +161,21 @@ public class Patient extends User {
      */
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    /**
+     * @return the creditCards
+     */
+    public ArrayList<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void addCreditCard(CreditCard credit) {
+        creditCards.add(credit);
+    }
+
+    public void removeCreditCard(int index) {
+        creditCards.remove(index);
     }
 
 }
