@@ -38,7 +38,7 @@ Mark.
 4. This is concerning the two use cases that we implemented. The first case we implemented was
 adding a credit card for billing purposes. This is to view a bill and pay the bill. The classes that 
 are affected by this is AddAppointmentUIController.java, AppointmentController.java, AddAppointmentUI.fxml.
-This case was implemented by Nick. The second use case we implemented was the notification case. This is to give the 
+This case was implemented by Nate. The second use case we implemented was the notification case. This is to give the 
 users a notification when it concerns anything with the application. This was implemented by Mark.
 
 5. getters and setters
