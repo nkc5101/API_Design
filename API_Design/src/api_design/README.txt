@@ -38,9 +38,10 @@ Mark.
 4. This is concerning the two use cases that we implemented. The first case we implemented was
 adding a credit card for billing purposes. This is to view a bill and pay the bill. The classes that 
 are affected by this is AddAppointmentUIController.java, AppointmentController.java, AddAppointmentUI.fxml.
-This case was implemented by Nate. The second use case we implemented was the notification case. This is to give the 
+This case was implemented by Nick. The second use case we implemented was the viewing records use case. 
+This use case uses the classes RecordsUI.fxml, Record.java, and AddRecordUIController.java. This is to give the 
 users a notification when it concerns anything with the application. This was implemented by Mark.
 
-5. getters and setters
-
-6. 
+5.  The last part of the re-factor plan was to implement and fix the input validation in this application. 
+This affects all classes that require an input. This to make sure that everything has the right input
+so the user can use the application better. This was implemented by Nick.  
