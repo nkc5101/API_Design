@@ -97,8 +97,8 @@ public class ViewBillUIController implements Initializable {
         alert.setTitle("Bill Info");
         alert.setHeaderText(tempRecord.getAppointment().getDate());
         alert.setContentText("Time: " + tempRecord.getAppointment().getTime() + "\nHospital: " + tempRecord.getAppointment().getHospital()
-                + "\nRoom Number: " + tempRecord.getAppointment().getRoom() + "\nDoctor: " + tempRecord.getAppointment().getDoctor().getFirstName() + tempRecord.getAppointment().getDoctor().getLastName()
-                + "\nAttended :" + tempRecord.isCompleted() + "\nBalance :" + tempRecord.getPrice() + "\nAdditional Comments: " + tempRecord.getComments());
+                + "\nRoom Number: " + tempRecord.getAppointment().getRoom() + "\nDoctor: " + tempRecord.getAppointment().getDoctorFirst()+ " " + tempRecord.getAppointment().getDoctorLast()
+                + "\nAttended: " + tempRecord.isCompleted() + "\nBalance: " + tempRecord.getPrice() + "\nAdditional Comments: " + tempRecord.getComments());
         alert.showAndWait();
     }
     

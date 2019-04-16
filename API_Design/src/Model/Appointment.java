@@ -11,8 +11,10 @@ package Model;
  */
 public class Appointment {
 
-    private Patient patient;
-    private Doctor doctor;
+    private String patientFirst;
+    private String patientLast;
+    private String doctorFirst;
+    private String doctorLast;
     private String date;
     private String time;
     private String room;
@@ -21,57 +23,27 @@ public class Appointment {
     /**
      * The default constructor for appointment
      *
-     * @param patient
-     * @param doctor
+     * @param patientFirst
+     * @param patientLast
+     * @param doctorFirst
+     * @param doctorLast
      * @param date
      * @param time
      * @param room
      * @param hospital
      */
-    public Appointment(Patient patient, Doctor doctor, String date, String time, String room, String hospital) {
-        this.patient = patient;
-        this.doctor = doctor;
+    public Appointment(String patientFirst, String patientLast, String doctorFirst, String doctorLast, String date, String time, String room, String hospital) {
+        this.patientFirst = patientFirst;
+        this.patientLast = patientLast;
+        this.doctorFirst = doctorFirst;
+        this.doctorLast = doctorLast;
         this.date = date;
         this.time = time;
         this.room = room;
         this.hospital = hospital;
     }
 
-    /**
-     * Get the patient that has the appointment
-     *
-     * @return the patient
-     */
-    public Patient getPatient() {
-        return patient;
-    }
-
-    /**
-     * Set the patient that has the appointment
-     *
-     * @param patient the patient to set
-     */
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    /**
-     * Get the doctor that is performing the appointment
-     *
-     * @return the doctor
-     */
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    /**
-     * Set the doctor that is performing the appointment
-     *
-     * @param doctor the doctor to set
-     */
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
+    
 
     /**
      * Get the date the appointment will take place
@@ -143,5 +115,33 @@ public class Appointment {
      */
     public void setHospital(String hospital) {
         this.hospital = hospital;
+    }
+
+    /**
+     * @return the patientFirst
+     */
+    public String getPatientFirst() {
+        return patientFirst;
+    }
+
+    /**
+     * @return the patientLast
+     */
+    public String getPatientLast() {
+        return patientLast;
+    }
+
+    /**
+     * @return the doctorFirst
+     */
+    public String getDoctorFirst() {
+        return doctorFirst;
+    }
+
+    /**
+     * @return the doctorLast
+     */
+    public String getDoctorLast() {
+        return doctorLast;
     }
 }

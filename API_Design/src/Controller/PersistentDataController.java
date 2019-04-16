@@ -68,6 +68,7 @@ public class PersistentDataController {
             Scanner sc = new Scanner(new File(filename));
             while (sc.hasNextLine()) {
                 String data = sc.nextLine();
+                data = decrypt(data, "smvb4MVk1rhzZnH");
                 dataCollection = gson.fromJson(data, PersistentDataCollection.class);
                 
                 
@@ -80,9 +81,10 @@ public class PersistentDataController {
 
     public void writeData() {
         try (FileWriter writer = new FileWriter(filename)) {
-            Gson gson = new GsonBuilder().create();
-            gson.toJson(dataCollection, writer);
-            
+            Gson gson = new Gson();
+            String savedData = gson.toJson(dataCollection);
+            savedData = encrypt(savedData, "smvb4MVk1rhzZnH");
+            writer.write(savedData);
             writer.close();
 
         } catch (IOException ex) {

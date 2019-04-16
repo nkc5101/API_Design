@@ -109,8 +109,8 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (pat != null) {
-                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
                 doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();
@@ -130,8 +130,8 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (doc != null) {
-                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
                 doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();
@@ -158,9 +158,9 @@ public class AddAppointmentUIController implements Initializable {
             }
 
             if (pat != null && doc != null) {
-                doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
-                pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
-                nur.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
+                pat.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
+                nur.addAppointment(new Appointment(pat.getFirstName(), pat.getLastName(), doc.getFirstName(), doc.getLastName(), dateVal, time, room, hospital));
                 doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();

@@ -54,7 +54,7 @@ public class RecordsUIController implements Initializable {
             ObservableList<Record> records = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords());
             dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDate()));
             commColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
-            docColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDoctor().getFirstName() + " " + cellData.getValue().getAppointment().getDoctor().getLastName()));
+            docColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDoctorFirst() + " " + cellData.getValue().getAppointment().getDoctorLast()));
             recordsTable.setItems(records);
         } else {
             errorLabel.setText("User is not authorized to view Records");
@@ -92,11 +92,11 @@ public class RecordsUIController implements Initializable {
     public void viewRecord(){
         Record tempRecord = recordsTable.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Bill Info");
+        alert.setTitle("Record Info");
         alert.setHeaderText(tempRecord.getAppointment().getDate());
         alert.setContentText("Time: " + tempRecord.getAppointment().getTime() + "\nHospital: " + tempRecord.getAppointment().getHospital()
-                + "\nRoom Number: " + tempRecord.getAppointment().getRoom() + "\nDoctor: " + tempRecord.getAppointment().getDoctor().getFirstName() + tempRecord.getAppointment().getDoctor().getLastName()
-                + "\nAttended :" + tempRecord.isCompleted() + "\nBalance :" + tempRecord.getPrice() + "\nAdditional Comments: " + tempRecord.getComments());
+                + "\nRoom Number: " + tempRecord.getAppointment().getRoom() + "\nDoctor: " + tempRecord.getAppointment().getDoctorFirst()+ " " + tempRecord.getAppointment().getDoctorLast()
+                + "\nAttended: " + tempRecord.isCompleted() + "\nBalance: " + tempRecord.getPrice() + "\nAdditional Comments: " + tempRecord.getComments());
         alert.showAndWait();
     }
 
