@@ -18,19 +18,19 @@
                 <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+        <MenuButton fx:id="recordsButton" layoutX="140.0" layoutY="56.0" mnemonicParsing="false" text="Records">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
                 <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+        <MenuButton layoutX="227.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
                 <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+        <MenuButton layoutX="289.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
@@ -56,5 +56,6 @@
         <ComboBox fx:id="hospitalBox" layoutX="213.0" layoutY="275.0" prefWidth="150.0" />
         <DatePicker fx:id="date" layoutX="201.0" layoutY="179.0" />
         <ComboBox fx:id="timeBox" layoutX="212.0" layoutY="209.0" prefWidth="150.0" />
+      <MenuButton fx:id="notificationButton" layoutX="400.0" layoutY="56.0" mnemonicParsing="false" text="Notifications" />
     </children>
 </AnchorPane>

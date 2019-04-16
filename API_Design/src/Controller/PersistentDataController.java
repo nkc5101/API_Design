@@ -7,6 +7,7 @@ package Controller;
 
 import Model.PersistentDataCollection;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +19,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.Iterator;
 import java.util.Scanner;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -63,13 +63,11 @@ public class PersistentDataController {
     }
 
     private void readData() {
-        dataCollection = new PersistentDataCollection();
         Gson gson = new Gson();
         try {
             Scanner sc = new Scanner(new File(filename));
             while (sc.hasNextLine()) {
                 String data = sc.nextLine();
-                data = decrypt(data, "smvb4MVk1rhzZnH");
                 dataCollection = gson.fromJson(data, PersistentDataCollection.class);
                 
                 
@@ -82,11 +80,8 @@ public class PersistentDataController {
 
     public void writeData() {
         try (FileWriter writer = new FileWriter(filename)) {
-            Gson gson = new Gson();
-            String savedData = gson.toJson(dataCollection);
-            savedData = encrypt(savedData, "smvb4MVk1rhzZnH");
-            writer.write(savedData);
-            writer.write("\r\n");
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(dataCollection, writer);
             
             writer.close();
 

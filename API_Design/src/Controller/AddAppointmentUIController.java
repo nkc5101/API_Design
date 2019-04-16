@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -45,6 +46,8 @@ public class AddAppointmentUIController implements Initializable {
     private ComboBox hospitalBox;
     @FXML
     private MenuButton appointmentsButton;
+    @FXML
+    private MenuButton notificationButton;
     private final ObservableList<String> docOptions = FXCollections.observableArrayList();
     private final ObservableList<String> timeOptions = FXCollections.observableArrayList("12:00", "1:00", "2:00");
     private final ObservableList<String> roomOptions = FXCollections.observableArrayList("111", "112", "113");
@@ -60,8 +63,34 @@ public class AddAppointmentUIController implements Initializable {
         timeBox.getItems().addAll(timeOptions);
         roomBox.getItems().addAll(roomOptions);
         hospitalBox.getItems().addAll(hospitalOptions);
+        
+        if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0){
+                    for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor()).getNotifications().size(); i++){
+            MenuItem temp = new MenuItem(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor()).getNotifications().get(i));
+            notificationButton.getItems().add(temp);
+                    }
+    }else if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInInsure() >= 0){
+            for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInInsure()).getNotifications().size(); i++){
+            MenuItem temp = new MenuItem(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInInsure()).getNotifications().get(i));
+            notificationButton.getItems().add(temp);
+        }
+        }else if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0){
+            for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getNotifications().size(); i++){
+            MenuItem temp = new MenuItem(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getNotifications().get(i));
+            notificationButton.getItems().add(temp);
+        } 
+        } else if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPharma() >= 0){
+            for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPharma()).getNotifications().size(); i++){
+            MenuItem temp = new MenuItem(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPharma()).getNotifications().get(i));
+            notificationButton.getItems().add(temp);
+        } 
+        } else {
+            for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse()).getNotifications().size(); i++){
+            MenuItem temp = new MenuItem(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getNurseList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInNurse()).getNotifications().get(i));
+            notificationButton.getItems().add(temp);
+        }
     }
-
+    }
     @FXML
     public void addAppointmentAction() {
         String patient = patientField.getText();
@@ -82,6 +111,8 @@ public class AddAppointmentUIController implements Initializable {
             if (pat != null) {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
+                pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
 
@@ -101,6 +132,8 @@ public class AddAppointmentUIController implements Initializable {
             if (doc != null) {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
+                pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
 
@@ -128,6 +161,8 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 nur.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                doc.getNotifications().add("Appointment for " + dateVal + " at " + time);
+                pat.getNotifications().add("Appointment for " + dateVal + " at " + time);
                 PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
             } else {

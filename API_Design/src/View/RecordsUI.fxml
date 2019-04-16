@@ -4,10 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecordsUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecordsUIController">
     <children>
         <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
             <items>
@@ -15,30 +17,39 @@
                 <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+        <MenuButton fx:id="recordsButton" layoutX="134.0" layoutY="56.0" mnemonicParsing="false" text="Records">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
                 <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+        <MenuButton layoutX="220.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
                 <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
             </items>
         </MenuButton>
-        <Label layoutX="169.0" layoutY="158.0" text="View Your Records Here!">
+        <Label layoutX="188.0" layoutY="14.0" text="View Your Records">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Label layoutX="36.0" layoutY="241.0" text="Select one of the buttons to navigate to the different sections of the application" />
+        <Label fx:id="errorLabel" layoutX="151.0" layoutY="90.0" prefHeight="17.0" prefWidth="273.0" text=" " />
         <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
+      <TableView fx:id="recordsTable" layoutX="109.0" layoutY="116.0" prefHeight="200.0" prefWidth="357.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="commColumn" prefWidth="156.0" text="Comments" />
+            <TableColumn fx:id="docColumn" prefWidth="125.0" text="Doctor" />
+        </columns>
+      </TableView>
+      <Button layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#viewRecord" text="View Record" />
+      <MenuButton fx:id="notificationButton" layoutX="398.0" layoutY="56.0" mnemonicParsing="false" text="Notifications" />
     </children>
 </AnchorPane>

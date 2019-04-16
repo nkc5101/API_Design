@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author nate
@@ -14,6 +16,7 @@ public abstract class User {
     private String username;
     private String password;
     private String email;
+    private final ArrayList<String> notifications;
 
     /**
      * Default constructor for User
@@ -26,6 +29,7 @@ public abstract class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.notifications = new ArrayList<>();
     }
 
     /**
@@ -82,5 +86,13 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /**
+     * @return the notifications
+     */
+    public ArrayList<String> getNotifications() {
+        return notifications;
+    }
+    
 
 }

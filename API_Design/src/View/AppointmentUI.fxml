@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AppointmentUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AppointmentUIController">
     <children>
         <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
             <items>
@@ -17,19 +17,19 @@
                 <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+        <MenuButton fx:id="recordsButton" layoutX="134.0" layoutY="56.0" mnemonicParsing="false" text="Records">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
                 <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+        <MenuButton layoutX="218.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
                 <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+        <MenuButton layoutX="281.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
@@ -48,5 +48,6 @@
                 <TableColumn fx:id="appointmentHospital" prefWidth="118.0" text="Hospital" />
             </columns>
         </TableView>
+      <MenuButton fx:id="notificationButton" layoutX="391.0" layoutY="56.0" mnemonicParsing="false" text="Notifications" />
     </children>
 </AnchorPane>

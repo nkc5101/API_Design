@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PayBillUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PayBillUIController">
     <children>
         <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
             <items>
@@ -16,25 +16,25 @@
                 <MenuItem mnemonicParsing="false" onAction="#createAppointmentAction" text="Create an Appointment" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="recordsButton" layoutX="165.0" layoutY="56.0" mnemonicParsing="false" text="Records">
+        <MenuButton fx:id="recordsButton" layoutX="129.0" layoutY="56.0" mnemonicParsing="false" text="Records">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewRecordAction" text="View Records" />
                 <MenuItem mnemonicParsing="false" onAction="#addRecordAction" text="Add Record" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="287.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
+        <MenuButton layoutX="214.0" layoutY="56.0" mnemonicParsing="false" text="Bills">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewBillAction" text="View Bills" />
                 <MenuItem mnemonicParsing="false" onAction="#payBillAction" text="Pay Bill" />
             </items>
         </MenuButton>
-        <MenuButton layoutX="369.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
+        <MenuButton layoutX="281.0" layoutY="56.0" mnemonicParsing="false" text="Prescriptions">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#viewPrescriptionAction" text="View Prescriptions" />
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
             </items>
         </MenuButton>
-        <Label layoutX="185.0" layoutY="14.0" text="Pay Your Bills">
+        <Label layoutX="198.0" layoutY="14.0" text="Pay Your Bills">
             <font>
                 <Font size="24.0" />
             </font>
@@ -50,5 +50,6 @@
         <TextField fx:id="ccvField" layoutX="269.0" layoutY="204.0" />
         <TextField fx:id="nameField" layoutX="269.0" layoutY="235.0" />
         <Label fx:id="errorLabel" layoutX="203.0" layoutY="99.0" prefHeight="21.0" prefWidth="169.0" />
+      <MenuButton fx:id="notificationButton" layoutX="395.0" layoutY="56.0" mnemonicParsing="false" text="Notifications" />
     </children>
 </AnchorPane>
