@@ -19,12 +19,12 @@ public class PersistentDataCollection {
     private final ArrayList<InsuranceCompany> insuranceList;
     private final ArrayList<Pharmacist> pharmaList;
     private final ArrayList<Nurse> nurseList;
-    private int loggedInPatient;
-    private int loggedInDoctor;
-    private int loggedInNurse;
-    private int loggedInInsure;
-    private int loggedInPharma;
-    private int selectedRecord;
+    private transient int loggedInPatient;
+    private transient int loggedInDoctor;
+    private transient int loggedInNurse;
+    private transient int loggedInInsure;
+    private transient int loggedInPharma;
+    private transient int selectedRecord;
 
     public PersistentDataCollection() {
         patientList = new ArrayList<>();

@@ -141,6 +141,7 @@ public class AppointmentUIController implements Initializable {
     @FXML
     public void logOutAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
+        PersistentDataController.getPersistentDataController().getPersistentDataCollection().logOutAccounts();
         NavController.getNavController(stage).setUpLoginScene();
     }
 
