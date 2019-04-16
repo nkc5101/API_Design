@@ -54,6 +54,7 @@ public class PayBillUIController implements Initializable {
             if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(i).getComments().equals(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getSelectedRecord()).getComments())) {
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords().get(i).setPrice(0);
                 PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).addCreditCard(new CreditCard(creditCard, ccv, name));
+                PersistentDataController.getPersistentDataController().writeData();
             }
         }
     }

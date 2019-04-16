@@ -82,6 +82,7 @@ public class AddAppointmentUIController implements Initializable {
             if (pat != null) {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
 
             } else {
@@ -100,6 +101,7 @@ public class AddAppointmentUIController implements Initializable {
             if (doc != null) {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
 
             } else {
@@ -126,6 +128,7 @@ public class AddAppointmentUIController implements Initializable {
                 doc.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 pat.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
                 nur.addAppointment(new Appointment(pat, doc, dateVal, time, room, hospital));
+                PersistentDataController.getPersistentDataController().writeData();
                 errorLabel.setText("Appointment successfully added");
             } else {
                 errorLabel.setText("Patient does not exist");

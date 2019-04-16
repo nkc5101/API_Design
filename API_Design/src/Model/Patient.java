@@ -19,7 +19,7 @@ public class Patient extends User {
     private Doctor doctor;
     private final ArrayList<Appointment> appointments;
     private final ArrayList<Record> patientRecords;
-    private final ArrayList<String> prescriptions;
+    private final ArrayList<Prescription> prescriptions;
     private final ArrayList<CreditCard> creditCards;
 
     /**
@@ -136,7 +136,7 @@ public class Patient extends User {
      *
      * @return the prescriptions
      */
-    public ArrayList<String> getPrescriptions() {
+    public ArrayList<Prescription> getPrescriptions() {
         return prescriptions;
     }
 
@@ -145,7 +145,7 @@ public class Patient extends User {
      *
      * @param prescription
      */
-    public void addPrescription(String prescription) {
+    public void addPrescription(Prescription prescription) {
         prescriptions.add(prescription);
     }
 

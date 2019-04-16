@@ -6,6 +6,25 @@
 package Controller;
 
 import Model.PersistentDataCollection;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Iterator;
+import java.util.Scanner;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -15,6 +34,9 @@ public class PersistentDataController {
 
     private static PersistentDataController controller;
     private PersistentDataCollection dataCollection;
+    private final String filename = "data.txt";
+    private static SecretKeySpec secretKey; //allows simpiler implementation of keys for encryption/decryption
+    private static byte[] key;
 
     /**
      * Default constructor for PrescriptionController and displays the
@@ -41,10 +63,75 @@ public class PersistentDataController {
     }
 
     private void readData() {
-        //insert read data from disk functionality
+        dataCollection = new PersistentDataCollection();
+        Gson gson = new Gson();
+        try {
+            Scanner sc = new Scanner(new File(filename));
+            while (sc.hasNextLine()) {
+                String data = sc.nextLine();
+                data = decrypt(data, "smvb4MVk1rhzZnH");
+                dataCollection = gson.fromJson(data, PersistentDataCollection.class);
+                
+                
+            }
+            
+        } catch (JsonSyntaxException | FileNotFoundException ex) {
+            ex.getMessage();
+        }
     }
 
-    private void writeData() {
-        //insert write data to disk functionality
+    public void writeData() {
+        try (FileWriter writer = new FileWriter(filename)) {
+            Gson gson = new Gson();
+            String savedData = gson.toJson(dataCollection);
+            savedData = encrypt(savedData, "smvb4MVk1rhzZnH");
+            writer.write(savedData);
+            writer.write("\r\n");
+            
+            writer.close();
+
+        } catch (IOException ex) {
+            ex.getMessage();
+        }
+
+    }
+    
+    private static void setKey(String suppliedKey) {
+        MessageDigest sha;
+        try {
+            key = suppliedKey.getBytes("UTF-8");
+            sha = MessageDigest.getInstance("SHA-1");
+            key = sha.digest(key);
+            key = Arrays.copyOf(key, 16);
+            secretKey = new SecretKeySpec(key, "AES");
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
+            ex.getMessage();
+        }
+    }
+
+    //allows the encryption to be done by the controller and not the data classes
+    private static String encrypt(String stringToEncrypt, String key) {
+        try {
+            setKey(key);
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            return Base64.getEncoder().encodeToString(cipher.doFinal(stringToEncrypt.getBytes("UTF-8")));
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException ex) {
+            ex.getMessage();
+        }
+        return null;
+    }
+
+    //allows the decryption to be done by the controller and not the data classes
+    private static String decrypt(String stringToDecrypt, String key) {
+        try {
+            setKey(key);
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            return new String(cipher.doFinal(Base64.getDecoder().decode(stringToDecrypt)));
+        } catch (InvalidKeyException | NoSuchAlgorithmException | IllegalBlockSizeException | NoSuchPaddingException | BadPaddingException ex) {
+            ex.getMessage();
+        }
+        return null;
     }
 }

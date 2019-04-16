@@ -5,11 +5,21 @@
  */
 package Controller;
 
+import Model.Prescription;
+import Model.Record;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -23,10 +33,41 @@ public class ViewPrescriptionUIController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
+    private TableView<Prescription> prescriptionTable;
+    @FXML
+    private TableColumn<Prescription, String> presDoctor;
+    @FXML
+    private TableColumn<Prescription, String> presName;
+    @FXML
+    private TableColumn<Prescription, String> presDosage;
+    @FXML
     private MenuButton appointmentsButton;
+    @FXML
+    private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0) {
+            ObservableList<Prescription> prescriptions = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPrescriptions());
+            presDoctor.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDoctor().getFirstName() + " " + cellData.getValue().getDoctor().getLastName()));
+            presName.setCellValueFactory(new PropertyValueFactory<>("drugName"));
+            presDosage.setCellValueFactory(new PropertyValueFactory<>("dosage"));
+            prescriptionTable.setItems(prescriptions);
+        } else {
+            errorLabel.setText("User is not authorized to view Bills");
+            
+        }
+    }
+    
+    @FXML
+    public void viewPrescription(){
+        Prescription tempPres = prescriptionTable.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Prescription Info");
+        alert.setHeaderText(tempPres.getDate());
+        alert.setContentText("Prescribing Doctor: " + tempPres.getDoctor().getFirstName()+ " "+ tempPres.getDoctor().getLastName() + "\nDrug Name: " + tempPres.getDrugName()
+                + "\nPrescribed Dosage: " + tempPres.getDosage());
+        alert.showAndWait();
     }
 
     @FXML

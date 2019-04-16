@@ -76,9 +76,11 @@ public class AddRecordUIController implements Initializable {
                 } else {
                     if (attendance.equals("Yes")) {
                         PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(patient).addRecord(new Record(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(patient).getAppointments().get(i), comments, true, priceVal));
+                        PersistentDataController.getPersistentDataController().writeData();
                         errorLabel.setText("Record added");
                     } else {
                         PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(patient).addRecord(new Record(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(patient).getAppointments().get(i), comments, false, priceVal));
+                        PersistentDataController.getPersistentDataController().writeData();
                         errorLabel.setText("Record added");
                     }
                 }

@@ -36,7 +36,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
             </items>
         </MenuButton>
-        <Label layoutX="177.0" layoutY="14.0" text="Add Your Appointment">
+        <Label layoutX="177.0" layoutY="14.0" text="Add an Appointment">
             <font>
                 <Font size="24.0" />
             </font>

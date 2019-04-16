@@ -4,10 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.201" fx:controller="Controller.ViewPrescriptionUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewPrescriptionUIController">
     <children>
         <MenuButton fx:id="appointmentsButton" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" text="Appointments">
             <items>
@@ -33,12 +35,20 @@
                 <MenuItem mnemonicParsing="false" onAction="#addPrescriptionAction" text="Add Prescription" />
             </items>
         </MenuButton>
-        <Label layoutX="131.0" layoutY="158.0" text="View Your Prescriptions Here!">
+        <Label layoutX="163.0" layoutY="14.0" text="View Your Prescriptions">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Label layoutX="36.0" layoutY="241.0" text="Select one of the buttons to navigate to the different sections of the application" />
+        <Label fx:id="errorLabel" layoutX="185.0" layoutY="93.0" prefHeight="17.0" prefWidth="206.0" />
         <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
+      <TableView fx:id="prescriptionTable" layoutX="121.0" layoutY="110.0" prefHeight="200.0" prefWidth="332.0">
+        <columns>
+          <TableColumn fx:id="presDoctor" prefWidth="75.0" text="Doctor" />
+          <TableColumn fx:id="presName" prefWidth="127.0" text="Drug Name" />
+            <TableColumn fx:id="presDosage" prefWidth="129.0" text="Dosage" />
+        </columns>
+      </TableView>
+      <Button layoutX="233.0" layoutY="336.0" mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
     </children>
 </AnchorPane>

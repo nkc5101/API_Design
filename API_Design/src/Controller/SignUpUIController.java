@@ -65,16 +65,20 @@ public class SignUpUIController implements Initializable {
             switch (typeOfAccount) {
                 case "Patient":
                     PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().add(new Patient(username, password, email, firstName, lastName));
+                    PersistentDataController.getPersistentDataController().writeData();
                     break;
                 case "Doctor":
                     System.out.println("doctor");
                     PersistentDataController.getPersistentDataController().getPersistentDataCollection().getDoctorList().add(new Doctor(username, password, email, firstName, lastName, "Hershey Medical Center", "surgeon"));
+                    PersistentDataController.getPersistentDataController().writeData();
                     break;
                 case "Insurance Company":
                     PersistentDataController.getPersistentDataController().getPersistentDataCollection().getInsuranceList().add(new InsuranceCompany(username, password, email, "AlphaCare", "test"));
+                    PersistentDataController.getPersistentDataController().writeData();
                     break;
                 case "Pharmacist":
                     PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPharmaList().add(new Pharmacist(username, password, email, firstName, lastName, "Bayer", "123 E Market S"));
+                    PersistentDataController.getPersistentDataController().writeData();
                     break;
                 default:
                     break;

@@ -164,4 +164,12 @@ public class PersistentDataCollection {
     public int getSelectedRecord() {
         return selectedRecord;
     }
+    
+    public void logOutAccounts(){
+        loggedInPatient = -1;
+        loggedInDoctor = -1;
+        loggedInNurse = -1;
+        loggedInInsure = -1;
+        loggedInPharma = -1;
+    }
 }
