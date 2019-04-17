@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -46,11 +47,19 @@ public class RecordsUIController implements Initializable {
     private TableColumn<Record, String> docColumn;
     @FXML
     private Label errorLabel;
+    @FXML
+    private ComboBox patientBox;
+    private final ObservableList<String> patientOptions = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0) {
+        if(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInDoctor() >= 0){
+            for(int i = 0; i < PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++){
+                patientOptions.add(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName() + " " + PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName());
+                patientBox.getItems().addAll(patientOptions);
+            }
+        } else if (PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient() >= 0) {
             ObservableList<Record> records = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getLoggedInPatient()).getPatientRecords());
             dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDate()));
             commColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
@@ -87,6 +96,20 @@ public class RecordsUIController implements Initializable {
             notificationButton.getItems().add(temp);
         }
     }
+    }
+    
+    @FXML
+    public void fillRecords(){
+        String patient = patientBox.getValue().toString();
+        for(int i=0; i<PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().size(); i++){
+            if(patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getFirstName()) || patient.contains(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getLastName())){
+                ObservableList<Record> records = FXCollections.observableArrayList(PersistentDataController.getPersistentDataController().getPersistentDataCollection().getPatientList().get(i).getPatientRecords());
+            dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDate()));
+            commColumn.setCellValueFactory(new PropertyValueFactory<>("comments"));
+            docColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAppointment().getDoctorFirst() + " " + cellData.getValue().getAppointment().getDoctorLast()));
+            recordsTable.setItems(records);
+            }
+        }
     }
     @FXML
     public void viewRecord(){
