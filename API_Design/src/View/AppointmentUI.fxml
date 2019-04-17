@@ -41,13 +41,14 @@
             </font>
         </Label>
         <Button layoutX="509.0" layoutY="56.0" mnemonicParsing="false" onAction="#logOutAction" text="Log Out" />
-        <TableView fx:id="appointmentsTable" layoutX="184.0" layoutY="129.0" prefHeight="200.0" prefWidth="269.0">
+        <TableView fx:id="appointmentsTable" layoutX="101.0" layoutY="134.0" prefHeight="200.0" prefWidth="360.0">
             <columns>
-                <TableColumn fx:id="appointmentDate" prefWidth="75.0" text="Date" />
-                <TableColumn fx:id="appointmentTime" prefWidth="75.0" text="Time" />
-                <TableColumn fx:id="appointmentHospital" prefWidth="118.0" text="Hospital" />
+                <TableColumn fx:id="appointmentDate" prefWidth="89.0" text="Date" />
+                <TableColumn fx:id="appointmentTime" prefWidth="100.0" text="Time" />
+                <TableColumn fx:id="appointmentHospital" prefWidth="170.0" text="Hospital" />
             </columns>
         </TableView>
       <MenuButton fx:id="notificationButton" layoutX="391.0" layoutY="56.0" mnemonicParsing="false" text="Notifications" />
+      <Button layoutX="214.0" layoutY="348.0" mnemonicParsing="false" onAction="#viewAppointment" text="View Appointment" />
     </children>
 </AnchorPane>

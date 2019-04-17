@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -90,6 +91,16 @@ public class AppointmentUIController implements Initializable {
     }
     }
 
+    @FXML
+    public void viewAppointment(){
+        Appointment temp = appointmentsTable.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Appointment Info");
+        alert.setHeaderText(temp.getDate());
+        alert.setContentText("Time: " + temp.getTime() + "\nHospital: " + temp.getHospital()
+                + "\nRoom Number: " + temp.getRoom() + "\nDoctor: " + temp.getDoctorFirst()+ " " + temp.getDoctorLast() + "\n Patient: " + temp.getPatientFirst() + " " + temp.getPatientLast());
+        alert.showAndWait();
+    }
     @FXML
     public void viewAppointmentAction() {
         Stage stage = (Stage) appointmentsButton.getScene().getWindow();
