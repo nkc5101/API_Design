@@ -11,10 +11,10 @@ package Model;
  */
 public class Appointment {
 
-    private String patientFirst;
-    private String patientLast;
-    private String doctorFirst;
-    private String doctorLast;
+    private final String patientFirst;
+    private final String patientLast;
+    private final String doctorFirst;
+    private final String doctorLast;
     private String date;
     private String time;
     private String room;

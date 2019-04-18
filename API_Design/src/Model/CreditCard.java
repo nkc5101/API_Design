@@ -11,9 +11,9 @@ package Model;
  */
 public class CreditCard {
 
-    private String creditCard;
-    private String ccv;
-    private String name;
+    private final String creditCard;
+    private final String ccv;
+    private final String name;
 
     public CreditCard(String creditCard, String ccv, String name) {
         this.ccv = ccv;

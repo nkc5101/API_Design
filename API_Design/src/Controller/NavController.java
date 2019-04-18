@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class NavController {
 
     @FXML
-    private Stage stage;
+    private final Stage stage;
     private static NavController controller;
 
     private NavController(Stage stage) {

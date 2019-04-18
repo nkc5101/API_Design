@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class PrescriptionController {
 
     @FXML
-    private Stage stage;
+    private final Stage stage;
     private static PrescriptionController controller;
 
     private PrescriptionController(Stage stage) {
