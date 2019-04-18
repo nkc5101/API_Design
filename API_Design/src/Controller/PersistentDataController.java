@@ -70,10 +70,9 @@ public class PersistentDataController {
                 String data = sc.nextLine();
                 data = decrypt(data, "smvb4MVk1rhzZnH");
                 dataCollection = gson.fromJson(data, PersistentDataCollection.class);
-                
-                
+
             }
-            
+
         } catch (JsonSyntaxException | FileNotFoundException ex) {
             ex.getMessage();
         }
@@ -92,7 +91,7 @@ public class PersistentDataController {
         }
 
     }
-    
+
     private static void setKey(String suppliedKey) {
         MessageDigest sha;
         try {
